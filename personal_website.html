@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam Farber</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        header {
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #000;
+        }
+        
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+        
+        .contact {
+            display: flex;
+            gap: 20px;
+            font-size: 0.95em;
+        }
+        
+        .contact a {
+            color: #0000EE;
+            text-decoration: none;
+        }
+        
+        .contact a:hover {
+            text-decoration: underline;
+        }
+        
+        .section {
+            margin-bottom: 10px;
+        }
+        
+        .section-header {
+            padding: 15px 0;
+            cursor: pointer;
+            font-size: 1.1em;
+            user-select: none;
+            border-bottom: 1px solid #000;
+        }
+        
+        .section-header:hover {
+            opacity: 0.7;
+        }
+        
+        .section-header::before {
+            content: '+ ';
+            margin-right: 8px;
+        }
+        
+        .section-header.active::before {
+            content: '− ';
+        }
+        
+        .section-content {
+            display: none;
+            padding: 25px 0;
+        }
+        
+        .section-content.active {
+            display: block;
+        }
+        
+        .item {
+            margin-bottom: 30px;
+        }
+        
+        .item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .item h3 {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .item .meta {
+            font-size: 0.9em;
+            margin-bottom: 12px;
+            opacity: 0.7;
+        }
+        
+        .item p {
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        
+        .item p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .item a {
+            color: #0000EE;
+            text-decoration: underline;
+        }
+        
+        .item a:hover {
+            opacity: 0.7;
+        }
+
+        .writeup-page {
+            display: none;
+        }
+
+        .writeup-page.active {
+            display: block;
+        }
+
+        .back-link {
+            color: #0000EE;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-content">
+        <header>
+            <h1>Sam Farber</h1>
+            <div class="contact">
+                <a href="mailto:hisamfarber@gmail.com">hisamfarber@gmail.com</a>
+                <a href="https://www.linkedin.com/in/samuel-farber" target="_blank">LinkedIn</a>
+            </div>
+        </header>
+
+        <main>
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">How I've Spent My Time</div>
+            <div class="section-content">
+                <div class="item">
+                    <h3>2025-Present: Product @ UE Labs, UserEvidence</h3>
+                </div>
+                <div class="item">
+                    <h3>2024-2025: CEO & Co-Founder, Zealot (Acquired by UserEvidence)</h3>
+                    <p>Turned a $45 dollar investment into a multi-million dollar acquisition at 25.</p>
+                    <p>I founded Zealot at 23 and exited in 18 months. I took the company from a dorm-room idea to a successful acquisition by UserEvidence.</p>
+                    <p>I raised VC funding for Zealot and pivoted the company. I led the sales and product efforts to close 7-figure deals with Enterprise B2B companies including Cisco, Airtable, ClickUp, Carta, Infor, etc.</p>
+                    <p>Sold Zealot to UserEvidence for upper 7 figures.</p>
+                </div>
+                <div class="item">
+                    <h3>2024: Chief of Staff, Inevitable Outcomes</h3>
+                    <p>I was Shaan Puri's Chief of Staff, left to go full-time on Zealot.</p>
+                </div>
+                <div class="item">
+                    <h3>2023-2024: Technology & Disruptive Commerce Analyst, J.P. Morgan</h3>
+                    <p>Worked in even more spreadsheets.</p>
+                </div>
+                <div class="item">
+                    <h3>2023: Generalist Intern, Gateway X</h3>
+                    <p>Helped launch Bootstrapped Giants, a fast-growing media company for founders. My job was to help start & scale multi-million dollar businesses. I wrote viral posts that reached millions and created Jesse Pujji's main headline: building a $1 billion venture studio. Also went viral on <a href="https://www.tiktok.com/@samuel.farber" target="_blank">TikTok</a>. Check out the posts: <a href="https://x.com/jspujji/status/1732025605875441773" target="_blank">here</a> and <a href="https://x.com/jspujji/status/1734202008352022923" target="_blank">here</a></p>
+                </div>
+                <div class="item">
+                    <h3>2022-2023: Growth & Product, BoldVoice</h3>
+                    <p>Helped grow BoldVoice through ambassadors and customer advocacy, which was voted one of the best apps in the world by Google in 2021.</p>
+                </div>
+                <div class="item">
+                    <h3>2022: Summer Analyst, J.P. Morgan</h3>
+                    <p>Worked in spreadsheets.</p>
+                </div>
+                <div class="item">
+                    <h3>2021-2022: Growth & Product, Kunduz</h3>
+                    <p>One of inc.com's 50 World-changing startups.</p>
+                </div>
+                <div class="item">
+                    <h3>2021: Summer Intern, Gallagher</h3>
+                    <p>Got coffee & bagels for people.</p>
+                </div>
+                <div class="item">
+                    <h3>2020-2021: Co-Founder, Postgame</h3>
+                    <p>First tech startup where I tried to build the LinkedIn for sports professionals with an ex-NFL player.</p>
+                </div>
+                <div class="item">
+                    <h3>2020: Went viral on TikTok</h3>
+                    <p>Got curious about how to go viral on TikTok when it was just coming out and grew the account to 5M views & 10K+ followers in a year-ish. <a href="https://www.tiktok.com/@samuel.farber" target="_blank">@samuel.farber</a></p>
+                </div>
+                <div class="item">
+                    <h3>2020-Present: Scaled an Etsy store to 5-figures</h3>
+                    <p>I wanted to learn how to do marketing for DTC products and Etsy seemed easier since buyers were already there vs Shopify. Figured out how to use Etsy SEO to get to top search results by leveraging a different name, using a tagging hack I found, etc. to become the #1 seller of stuff with tweets on them.</p>
+                    <p><a href="https://www.etsy.com/shop/TweetsOnThings?ref=shop_sugg_market" target="_blank">My Etsy store (TweetsOnThings)</a> - still running!</p>
+                </div>
+                <div class="item">
+                    <h3>2019-2022: Ex-D1 Athlete, Butler Football</h3>
+                    <p>No, this isn't an error. Never stepped on the field lol. Amidst a labrum injury and also not being good enough I guess.</p>
+                    <p><a href="https://www.espn.com/college-football/player/_/id/4573920/sam-farber" target="_blank">My ESPN profile (complete with no stats)</a></p>
+                </div>
+                <div class="item">
+                    <h3>2019-2020: Ran the #1 underground Madden (Xbox) gambling ring</h3>
+                </div>
+                <div class="item">
+                    <h3>2018-2020: Delivery Driver, Domino's</h3>
+                    <p>Every Monday night I got to deliver 50 pizzas to a local high school. I got a $50 tip every time. It was awesome.</p>
+                </div>
+                <div class="item">
+                    <h3>2016: My freshman parking hack</h3>
+                    <p>Employees and seniors got parking spots. I wasn't either, so I became a swim instructor. Parked free for two years.</p>
+                </div>
+                <div class="item">
+                    <h3>2014: Tried to file a world record for the smallest pencil LOL</h3>
+                </div>
+                <div class="item">
+                    <h3>2013: Jailbreaking iPods for friends, flipping lifesavers for "pack paws" in middle school</h3>
+                </div>
+                <div class="item">
+                    <h3>2012: Washing dishes at my dad's restaurant</h3>
+                    <p>Learned I never wanted to trade time for money.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">Mini Adventures</div>
+            <div class="section-content">
+                <div class="item">
+                    <h3>Completed</h3>
+                    <p>• Road Trip Through Iceland</p>
+                    <p>• Go to the Magic Lounge in Chicago</p>
+                    <p>• Skydiving</p>
+                    <p>• Cold plunge in the arctic ocean in Tromso, Norway</p>
+                    <p>• Chiang Mai Lantern Festival</p>
+                    <p>• Study Abroad in Barcelona</p>
+                    <p>• Play Division 1 Football, WR</p>
+                    <p>• Go white water rafting</p>
+                    <p>• Pet an elephant</p>
+                </div>
+                <div class="item">
+                    <h3>Upcoming / Bucket List</h3>
+                    <p>• Guatemala yoga retreat (March 2026)</p>
+                    <p>• Backpacking/Hiking Machu Picchu (May 2026)</p>
+                    <p>• Triathlon (August 2026)</p>
+                    <p>• Commit a year or less to getting my name in the Guinness world record book</p>
+                    <p>• Walk from SF to NYC</p>
+                    <p>• Become a product manager for the government</p>
+                    <p>• 300 Club in Antarctica</p>
+                    <p>• Work at McDonald's for 6 months</p>
+                    <p>• Learn how to play saxophone</p>
+                    <p>• Do 50 pull ups at once</p>
+                    <p>• Live in a foreign country</p>
+                    <p>• Visit Taiwan</p>
+                    <p>• Visit Sri Lanka</p>
+                    <p>• Go to a public speaking camp</p>
+                    <p>• Do a solo 12 hour walk outside with no phone or convo</p>
+                    <p>• Polar plunge Knick glacier</p>
+                    <p>• Tomorrowland 2027</p>
+                    <p>• Visit all 50 states in one year</p>
+                    <p>• Do an Improv class</p>
+                    <p>• Get on a game show as a contestant</p>
+                    <p>• Go to a rock and roll concert</p>
+                    <p>• Fly in a hot air balloon in Turkey</p>
+                    <p>• Cage dive with sharks</p>
+                    <p>• Sand skiing in Huacachina Peru</p>
+                    <p>• Attend a wedding in a foreign country</p>
+                    <p>• Nile River cruise</p>
+                    <p>• See the cherry blossoms in Japan</p>
+                    <p>• Albania</p>
+                    <p>• Bosnia</p>
+                    <p>• Romania</p>
+                    <p>• Georgia</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">Yearly Misogis</div>
+            <div class="section-content">
+                <div class="item">
+                    <h3>Started in 2024</h3>
+                </div>
+                <div class="item">
+                    <h3>2026: Run a sprint triathlon under 2 hours</h3>
+                    <p>750m swim, 20km bike ride, and 5km run. August 25.</p>
+                    <p>Goal: 90 mins total</p>
+                    <p>• 15min swim (2:00/100m pace)</p>
+                    <p>• 3min transition</p>
+                    <p>• 40min bike (30km/h ride)</p>
+                    <p>• 2min transition</p>
+                    <p>• 30min run (6min/km)</p>
+                </div>
+                <div class="item">
+                    <h3>2025: Run a marathon (failed)</h3>
+                    <p>It was mile 22 out of 26 and I had just passed out. Next thing I knew I woke up in the ambulance and was so confused. I was asking the medics if I was going to die and they just wouldn't answer me. So I kept getting even more scared. Out of the back window I saw my fiancé and was scared. Thinking to myself what a great life I lived. I was for sure thinking I was dead.</p>
+                    <p>Later found out I got rhabdomyolysis. They took my CK levels in the ER. Normal level is 500... mine was 67,000! The doctor asked if I did triathlons with how high they were. I was in the hospital for 5 days on non-stop IV flush. During which time my kidney and liver levels got high as well. By the time of my release, my CK levels were 2,000.</p>
+                    <p>I was lucky that I came in and got found so fast or I could have lost my kidneys or died, which apparently happens in 1 out of 10 cases. Apparently it hits and gets serious FAST! But yeah honestly kind of learned from this that you never know what will happen when you stare death in the eyes.</p>
+                </div>
+                <div class="item">
+                    <h3>2024: Start a VC backed startup (success)</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">Write-ups</div>
+            <div class="section-content">
+                <div class="item">
+                    <h3><a href="javascript:void(0);" onclick="showWriteup('gamification')">Why gamification fails (and how to fix it)</a></h3>
+                    <div class="meta">January 2025</div>
+                    <p>Most companies use points to trick users into doing what they want. That's backwards.</p>
+                </div>
+                <div class="item">
+                    <h3><a href="javascript:void(0);" onclick="showWriteup('amsterdam')">How I closed a million-dollar deal with a stranger's charger</a></h3>
+                    <div class="meta">December 2024</div>
+                    <p>I gave a gym employee my passport, wallet, and ID. Three minutes left.</p>
+                </div>
+                <div class="item">
+                    <h3><a href="javascript:void(0);" onclick="showWriteup('onion')">Stop solving the wrong problem</a></h3>
+                    <div class="meta">January 2025</div>
+                    <p>Tums don't fix heartburn. Neither does your product.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="writeup-page" style="display: none;">
+            <div style="max-width: 700px; margin: 0 auto; padding: 60px 20px;">
+                <div style="margin-bottom: 30px;">
+                    <a href="javascript:void(0);" onclick="closeWriteup()" style="color: #0000EE; text-decoration: underline;">← Back</a>
+                </div>
+                <div id="writeup-content"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">Travel Itineraries</div>
+            <div class="section-content">
+                <div class="item">
+                    <h3>Itineraries I've Collected (not all mine)</h3>
+                    <p>• <a href="https://docs.google.com/document/d/1Z9MCTBITcrkYxA93fY-0gQOaGuNrELZeuk8m86bK1R4/edit?tab=t.0#heading=h.h90b8rz4d607" target="_blank">NYC</a></p>
+                    <p>• <a href="https://drive.google.com/file/d/1piwdQzawDbZCmxtgp_c_Ff9oanZ74zuI/view?usp=sharing" target="_blank">Jackson Hole</a></p>
+                    <p>• <a href="https://drive.google.com/file/d/1_JJF6GHRaq3kUfB_Q2F4kDNatWas4EUb/view?usp=sharing" target="_blank">Barcelona</a></p>
+                    <p>• <a href="https://docs.google.com/document/d/1PrzFtwIcgJjwjS5tijw1d5vpxl4UFzUPvORTVCeBQRo/edit?tab=t.0" target="_blank">Hong Kong</a></p>
+                    <p>• <a href="https://docs.google.com/spreadsheets/d/1rmn6IudGecEu5xBSrvw51ewBQuDw6Yj3s43iPhM4yFQ/edit?usp=sharing" target="_blank">Greece/Croatia</a></p>
+                    <p>• <a href="https://docs.google.com/spreadsheets/d/1FuLAtibzbmx_QGCq76B_yue_ZZtoGjebDYbNp4s7RV8/edit?usp=sharing" target="_blank">Scandinavia (Tromso, Stockholm, Copenhagen)</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">Business Ideas</div>
+            <div class="section-content">
+                <div class="item">
+                    <h3>Personal Care & Health</h3>
+                    <p>• Never shave again - lotion/cream that removes hair in bulk, no more cutting yourself</p>
+                    <p>• Water activated makeup wipe removers - no more micellar water or bad makeup wipes</p>
+                    <p>• Never have bad breath again - competitor to gum (lasts 10 mins) and Listerine (chemicals and gross) that you pop in after dinner</p>
+                    <p>• Some kind of mouth wash that makes brushing teeth totally unnecessary. Can't believe we're still using hundred-year old technology to manually scrub our teeth</p>
+                    <p>• A true solution to combat baldness</p>
+                    <p>• Natural hair removal products - some type of natural cream that removes all hair (better for you than nair)</p>
+                    <p>• Low testosterone drink for men with low T</p>
+                    <p>• Sleep rituals - small nightly kit and routine that reliably flips your body into sleep mode</p>
+                    <p>• Flip pillow - stays cool and keeps your neck aligned</p>
+                    <p>• Personalized "magic pills" - I have to take 10 different pills daily. What if there was just one magic pill based on tests you take</p>
+                    <p>• Ginger gummies - ginger shots burn and are messy, gummies deliver benefits in portable form</p>
+                </div>
+                <div class="item">
+                    <h3>Home & Living</h3>
+                    <p>• Modern bathroom redesign - toilet is too high (bodies designed to squat), sink too low, shower is a deathtrap. We fill this room with toxic chemicals. We can't afford to do it this way</p>
+                    <p>• Home water quality is getting worse, fix it!</p>
+                    <p>• Opposite of a microwave - cool/freeze things in seconds</p>
+                    <p>• Never use another garbage can again - trash cans that disintegrate your trash in seconds</p>
+                    <p>• Sustainable glass containers - storing food in micro-plastic containers is so bad</p>
+                    <p>• The only luxury furniture brand that never comes with screws... pieces that click into place!</p>
+                    <p>• A button on your TV that makes your remote control sound an alarm so you can find it</p>
+                    <p>• RESET - whole home refresh that cleans air, textiles, and clutter so space feels new again</p>
+                    <p>• Glass keepers - durable glass that actually nests well for leftovers</p>
+                    <p>• Alarm clocks - stop waking up to stress. We've used loud noises for 100 years to start our day with cortisol</p>
+                </div>
+                <div class="item">
+                    <h3>Food & Beverage</h3>
+                    <p>• Remake the ranch close label for their bottle</p>
+                    <p>• DTC mayonnaise brand - high-quality modern mayo delivered to your doorstep</p>
+                    <p>• Modern car air fresheners DTC brand - fuck those small green trees</p>
+                    <p>• Fast health food - fast food is quick but unhealthy. Personalize bowls to your goals without slowing service</p>
+                    <p>• Food as software - planning what to eat wastes time and money. Service that plans and delivers daily meals tuned to your schedule</p>
+                    <p>• Taste test co. - spices feel the same. A seasoning brand built around 'can you taste the difference' challenge</p>
+                    <p>• Zero cal ice - cold, flavorful snack without calories. Organic flavored ice with great texture</p>
+                    <p>• Wine club OS - modern CRM, shipping, and compliance for winery memberships</p>
+                    <p>• Wine robots - pick, sort, and move grapes and bottles without damage</p>
+                </div>
+                <div class="item">
+                    <h3>Finance & Money</h3>
+                    <p>• Disrupt Experian, TransUnion, and credit bureaus</p>
+                    <p>• Stake your money like overlord.app but over iMessage. If you do the task, you get it back. Holds you accountable with money</p>
+                    <p>• Found money - states hold billions in unclaimed funds people never check. Background watcher alerts you when money is found</p>
+                    <p>• Seized assets marketplace - government auctions undersell because sites are clunky</p>
+                    <p>• Modern lottery - paper tickets and murky odds turn off modern players. Mobile tickets, clear odds, instant payouts</p>
+                    <p>• Points scout - points and miles feel like a puzzle. Search in plain language and auto-convert to book best option</p>
+                    <p>• One smart card - one card routes spend to best rewards program behind the scenes</p>
+                    <p>• People markets - people need flexible financing tied to future earnings</p>
+                    <p>• Derivatives ledger - trillions in contracts sit in spreadsheets. Real ledger tracks positions with audit</p>
+                </div>
+                <div class="item">
+                    <h3>Travel & Transportation</h3>
+                    <p>• Never get denied for a Visa again - competitor to VFS global, AI powered</p>
+                    <p>• Visabot - find and book appointments, competitor to VFS global</p>
+                    <p>• Apple Pro real estate tours - why travel to different houses when you can see 10+ in VR</p>
+                    <p>• Marketplace for bucket list items - tell them what you want to do, easily book end to end</p>
+                    <p>• Travi - trip planning eats weekends. Planner learns your taste and returns bookable itineraries</p>
+                    <p>• Travel VAT wallet - travelers abandon refunds because forms are painful. Wallet captures receipts and sends refund automatically</p>
+                    <p>• Calm flights - turbulence feels scary. Offline guide for your exact route explains bumps</p>
+                    <p>• Smart brake lights - lights that brighten with pedal pressure give drivers behind more time</p>
+                </div>
+                <div class="item">
+                    <h3>Social & Entertainment</h3>
+                    <p>• AI powered social network - always on listening/watching through meta glasses. Uses AI to auto create social posts you approve</p>
+                    <p>• iMessage app - never have a dead group chat again. Sends random prompts for what you're up to</p>
+                    <p>• VC firm that only invests in movies</p>
+                    <p>• Family game night - browser games that make everyone look clever in minutes</p>
+                    <p>• SingAnywhere - portable mic and app turn any room into a singalong</p>
+                    <p>• Euchre deck - purpose-built deck for Euchre players</p>
+                    <p>• Open poker - open source poker platform with modern payments builds trust</p>
+                </div>
+                <div class="item">
+                    <h3>B2B Software & Services</h3>
+                    <p>• AI native IT solutions provider / MSP for Fortune 50 like SFDC, Microsoft, Oracle</p>
+                    <p>• "Virtual DPO/Security Officer as a Service" - fractional DPO service for startups. Handle questionnaires, DPAs, compliance</p>
+                    <p>• Agency to help companies build amazing help/support docs for customers</p>
+                    <p>• Software to help refactor legacy code</p>
+                    <p>• Never worry about bugging your Eng team to spin up a sandbox with good data. Easily create sandboxes with dummy data</p>
+                    <p>• Become MCP-Compliant without the headaches in seconds</p>
+                    <p>• Rebuild slack with Superhuman UI, Slack as infra so people don't lose access</p>
+                    <p>• Superhuman for apple notes</p>
+                    <p>• Teams to Slack connection for CS support - can't connect with customers who use teams in slack</p>
+                    <p>• Snoop - competitor research is manual. Daily Slack feed summarizes launches, pricing, hiring</p>
+                    <p>• See your stack - agentless discovery and live dependency map give one accurate source of truth</p>
+                    <p>• AutoContent hub - calls, docs, threads contain unused gold. Pipeline turns them into weekly posts, clips, blogs</p>
+                    <p>• Cookie jar - cookie banners are ugly and non-compliant. One-click setup for Framer sites</p>
+                    <p>• Glue - secrets leak through docs and chat. Simple vault with automatic redaction</p>
+                    <p>• Bank 270 - automation handles commercial banking onboarding, underwriting inside tools banks use</p>
+                    <p>• Board brief - board updates eat weekends. Living packet assembles metrics, risks, wins automatically</p>
+                    <p>• Slack back office - HR, payroll, compliance, purchasing run inside chat</p>
+                    <p>• Screen helper - on-screen helper recognizes patterns and offers fix before ticket is filed</p>
+                    <p>• Salesforce cleanup - cleaner fixes CRM records at scale and keeps them fresh</p>
+                    <p>• Bookie OS - software manages ledgers, risk, and payouts for independent bookies</p>
+                </div>
+                <div class="item">
+                    <h3>Healthcare & Medical</h3>
+                    <p>• Autism paid newsletter for parents with interviews, advice etc</p>
+                    <p>• Trial finder - clinical trials stall because recruiting takes months. Structured screening fills studies faster</p>
+                    <p>• Clarity - speech therapy is expensive. Bite-size sessions and game loops deliver progress at home</p>
+                    <p>• Organ forge - invest in growth and scaffolds that move organ replacement closer to reality</p>
+                    <p>• Body simulator - virtual models test drug compounds before human trials</p>
+                    <p>• ADHD neuro-feedback facility</p>
+                </div>
+                <div class="item">
+                    <h3>E-commerce & Retail</h3>
+                    <p>• Buy/roll up women's beauty centers</p>
+                    <p>• Buy the neighborhood tobacco and liquor centers</p>
+                    <p>• Buy all beer distributors in one area</p>
+                    <p>• Own the veneer market w/ influencers. Document all celebs in veneers, own the lab manufacturing them</p>
+                    <p>• Acid reflux brand</p>
+                    <p>• ADA compliance eCom app - ensure your online store meets ADA standards and doesn't get sued</p>
+                    <p>• Shuffle dust - bars want shuffleboard to feel perfect. Consistent powder delivered on subscription</p>
+                </div>
+                <div class="item">
+                    <h3>Education & Career</h3>
+                    <p>• Communication boot camp - body language, charisma, flirting, learn to tell stories, use voice like instrument</p>
+                    <p>• Duolingo for learning Excel - fun courses sold B2B to finance firms, schools</p>
+                    <p>• Study abroad management software - saw counselor using spreadsheets, looks painful</p>
+                    <p>• Career consulting for college students - resume, interview prep, networking (I actually started this and it worked)</p>
+                </div>
+                <div class="item">
+                    <h3>Media & Content</h3>
+                    <p>• PE fund for acquiring licensing rights to make AI version of celebrities so they don't have to fly to LA to shoot commercials</p>
+                    <p>• AI agency to help famous people sell their AI rights to companies for ads</p>
+                    <p>• Full-time content creator recruitment agency - find in-house content creators for businesses</p>
+                    <p>• Pitch a government & go make content for them on TikTok to increase GDP</p>
+                    <p>• Plane ads - in-cabin screens capture attention for hours. Marketplace sells space by route</p>
+                    <p>• Raised by Reddit - weekly email with one standout question and five useful answers</p>
+                </div>
+                <div class="item">
+                    <h3>Real Estate & Property</h3>
+                    <p>• Open bath houses in the US</p>
+                    <p>• Buy local dog day cares - business that will never go away</p>
+                    <p>• CRM for landlords - their workflows seem like a total mess</p>
+                    <p>• Window bots - skyscraper windows are risky to clean. Robots do it on schedule</p>
+                </div>
+                <div class="item">
+                    <h3>Family & Memory</h3>
+                    <p>• TimelessTales - preserves family stories before they fade. Interview family members, create book or movie. Charge rich people $50k</p>
+                    <p>• 8teen - text pics/videos to a number that stores memories of kids growing up. They get access when they're 18</p>
+                    <p>• Yearbook - parents have thousands of phone photos. Text them in and get auto-made yearbook of your child's life</p>
+                    <p>• Tape to cloud - family videos sit on degrading tapes. Mail a box, get private cloud library</p>
+                </div>
+                <div class="item">
+                    <h3>Consumer Tech & Apps</h3>
+                    <p>• Anti-spam call blocker - blocks annoying spam calls, only get important ones</p>
+                    <p>• Eye tracking technology for bars - Amazon Go store tech but for bars. Scan card when you walk in</p>
+                    <p>• Temp iPhone + Android phones for app testing - test apps on hundreds of devices without needing 100s of devices</p>
+                    <p>• Sarcasm font</p>
+                    <p>• Highlight to help - press one key anywhere to shorten, fix, or format selected text</p>
+                    <p>• Keyless you - drop-in biometric and device login makes sign-in instant</p>
+                    <p>• Universal receipts - one wallet stores proof of purchase for returns, warranties, loyalty</p>
+                </div>
+                <div class="item">
+                    <h3>Infrastructure & Big Bets</h3>
+                    <p>• Reinvent the aviation black box</p>
+                    <p>• Reinvent lint rollers to remove friction and not waste paper</p>
+                    <p>• Aviation software for registering parts with FAA</p>
+                    <p>• Ticket queue mgmt system for big events</p>
+                    <p>• New type of certification for future - AI audit certification or AI bias certification</p>
+                    <p>• Airfield robots - baggage handling is dangerous and slow. Robots load/unload to reduce injuries</p>
+                    <p>• Carwash link - standard lets self-driving car find, queue, and pay for wash on its own</p>
+                    <p>• ATC assist - decision support for air traffic controllers surfaces conflicts earlier</p>
+                    <p>• SkyFi - airline Wi-Fi rarely lets you work or stream. Smarter routing makes it feel normal</p>
+                    <p>• Airline catering 2.0 - local kitchens and smarter distribution improve plane food</p>
+                    <p>• City pipe fix - new materials and robotics replace old water/sewer pipes with less digging</p>
+                    <p>• Next batteries - safer, denser batteries change EVs, phones, home storage, grid</p>
+                    <p>• Port OS - digital bills, faster clearance, container tracking keep ships moving</p>
+                    <p>• Cold chain OS - sensors and live dashboards keep goods cold and predict demand to cut waste</p>
+                </div>
+                <div class="item">
+                    <h3>Compliance & Legal</h3>
+                    <p>• $500T lost everyday for scams. Always on system to monitor your life. We'll cover your scam cost if you ever get scammed</p>
+                    <p>• Annual bias check - independent yearly reviews produce simple scorecards companies can share</p>
+                    <p>• Friendly home security - clear pricing, strong privacy defaults, helpful app</p>
+                    <p>• VAT rails - small sellers struggle with VAT math across borders. One login calculates tax and files on time</p>
+                    <p>• Deal coach - flat-fee templates, redlines, scripts to win price and terms in hours</p>
+                    <p>• Startup counsel - founders hate surprise legal bills. Flat-fee packages with clear scope</p>
+                    <p>• Gov navigator - helper completes government filings with you and tracks deadlines</p>
+                    <p>• Fair prison connect - prison calls and commissary overcharge families. App with honest pricing</p>
+                    <p>• Bail tools - risk scoring, reminders, digital funds reduce cost and missed court appearances</p>
+                    <p>• Gen Z insurance - mobile-first policies with clear coverage and fast claims</p>
+                </div>
+                <div class="item">
+                    <h3>Marketplace & Discovery</h3>
+                    <p>• Global lost and found - one tag and shared database so airports, hotels, stadiums can return things</p>
+                    <p>• Boredom cinema - dark, silent rooms booked for 20-60 minutes deliver paid detox experience</p>
+                    <p>• Smart courts - sensors track tennis scores and usage, bookings free up instantly</p>
+                    <p>• Elder connect - one feed accepts texted photos, voice notes, check-ins, prints best into monthly books</p>
+                    <p>• Only the best - search results only from sources and people you choose</p>
+                    <p>• Captcha plus - site-specific puzzles double as tiny polls or sponsor questions</p>
+                    <p>• Fresh seats - shared seating materials absorb and neutralize smells</p>
+                </div>
+                <div class="item">
+                    <h3>Compliance & Regulatory Arbitrage</h3>
+                    <p>• POTS replacement for elevator & pool phones - buildings pay $150-$300/month for emergency landlines by law. Switch them to cellular gateway for $20/month, charge $80/month. Pure arbitrage.</p>
+                    <p>• DOT consortium for trucking drug testing - trucking companies legally required to join random testing pool. You're just the admin managing compliance, they pay or trucks get taken off road.</p>
+                    <p>• Backflow preventer compliance coordinator - cities mandate annual inspections for commercial buildings. You don't do the plumbing, just handle scheduling and paperwork. City does your sales by sending threatening letters.</p>
+                    <p>• Mock surveyor / accreditation consultant for nursing homes - they're terrified of surprise state inspections. Sell quarterly "audit prep" visits with checklists. You're selling peace of mind against being shut down.</p>
+                </div>
+            </div>
+        </div>
+            </main>
+    </div>
+
+    <div id="writeup-gamification" class="writeup-page">
+        <a class="back-link" onclick="hideWriteup()">← Back</a>
+        <h2>Why gamification fails (and how to fix it)</h2>
+        <p style="margin-bottom: 20px; opacity: 0.7;">January 2025</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;"><strong>The problem with most gamification:</strong> Companies use points, badges, and leaderboards to trick users into doing what the organization wants. That's backwards.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Gamification isn't about manipulating someone to complete a task. It's about using game mechanics as a motivating factor to help people reach their own goals in a more habit-forming way.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 25px;"><strong>The core principle:</strong> Gamification is about motivating people to achieve their own goals, NOT the organization's goals.</p>
+        
+        <h3 style="font-size: 1.3em; margin: 25px 0 15px 0;">The Pain Squad case study</h3>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">SickKids hospital in Toronto needed children with cancer to fill out daily pain journals. The kids were suffering. The treatments were painful. Patients weren't up to the task of filling out their pain journals, particularly on bad days. With inconsistent reporting, it was impossible for doctors to determine which treatments work best.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Previous studies had tried paying kids to fill out journals. It didn't work.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">So they looked at the problem from the kids' perspective. They created "Pain Squad," an iPhone app that enlists kids as members of a special police force on a mission to hunt down pain.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">When children complete their pain report three days in a row, they progress from rookie to sergeant and through ranks until they finally become a chief. The team recruited heroes from Canada's leading police shows to create videos encouraging the children. The actors address each child by their rank.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">According to one mother: "It makes her feel that she's a part of this."</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 25px;">Instead of paying kids to provide information that researchers need, Pain Squad engages them in an inspiring mission. Most importantly, they are contributing to something bigger than themselves.</p>
+        
+        <h3 style="font-size: 1.3em; margin: 25px 0 15px 0;">The Hook Model: Building habit-forming technology</h3>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Effective hooks transition users from relying upon external triggers to cueing mental associations with internal triggers. Users move from states of low engagement to high engagement, from low preference to high preference.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;"><strong>Five fundamental questions for building effective hooks:</strong></p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;"><strong>1. Internal trigger:</strong> What do users really want? What pain is your product relieving? Does your users' internal trigger frequently prompt them to action?</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;"><strong>2. External trigger:</strong> What brings users to your service? Is your external trigger cueing them when they are most likely to act?</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;"><strong>3. Action:</strong> What is the simplest action users take in anticipation of reward, and how can you simplify your product to make this action easier?</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;"><strong>4. Variable reward:</strong> Are users fulfilled by the reward yet left wanting more? Does the reward satisfy your users' need while leaving them wanting more?</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;"><strong>5. Investment:</strong> What "bit of work" do users invest in your product? Does it load the next trigger and store value to improve the product with use?</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 25px;"><strong>6. Repeat</strong> this process over and over again.</p>
+        
+        <h3 style="font-size: 1.3em; margin: 25px 0 15px 0;">The power of variable rewards</h3>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Research shows that levels of dopamine surge when the brain is expecting a reward. But here's the key: what draws us to act is not the sensation we receive from the reward itself, but the need to alleviate the craving for that reward.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Feedback loops are all around us, but predictable ones don't create desire. The unsurprising response of your fridge light turning on when you open the door doesn't drive you to keep opening it again and again.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">However, add some variability to the mix—suppose a different treat magically appears in your fridge every time you open it—and voilà, intrigue is created.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 25px;"><strong>Three types of rewards:</strong></p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;"><strong>Social rewards (Tribe):</strong> Driven by our connectedness with other people. Quora demonstrated that social rewards and the variable reinforcement of recognition from peers proved to be much more frequent and salient motivators than monetary rewards.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;"><strong>Hunt rewards:</strong> The pursuit itself. Seeking pleasure and avoiding pain.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 25px;"><strong>Self rewards:</strong> Seeking social acceptance while avoiding social rejection.</p>
+        
+        <h3 style="font-size: 1.3em; margin: 25px 0 15px 0;">Removing friction</h3>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Any technology or product that significantly reduces the steps to complete a task will enjoy high adoption rates by the people it assists.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Remove every single piece of friction in the process. No logins. Unique links for every user. Decrease time it takes to complete actions.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 25px;"><strong>The endowed progress effect:</strong> Two groups of customers were given punch cards awarding a free car wash once the cards were fully punched. One group was given a blank punch card with eight squares; the other was given a punch card with ten squares that came with two free punches. Both groups still had to purchase eight car washes to receive a free wash; however, the second group—those that were given two free punches—had a staggering 82 percent higher completion rate.</p>
+        
+        <h3 style="font-size: 1.3em; margin: 25px 0 15px 0;">Internal vs external triggers</h3>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;"><strong>External triggers</strong> tell the user what to do next by placing information within the user's environment (emails, notifications, text messages).</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;"><strong>Internal triggers</strong> tell the user what to do next through associations stored in the user's memory. When a product becomes tightly coupled with a thought, an emotion, or a preexisting routine, it leverages an internal trigger.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Negative emotions frequently serve as internal triggers. The ultimate goal of a habit-forming product is to solve the user's pain by creating an association so that the user identifies the company's product or service as the source of relief.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 25px;">Once we're hooked, using these products does not always require an explicit call to action. Instead, they rely upon our automatic responses to feelings that precipitate the desired behavior.</p>
+        
+        <h3 style="font-size: 1.3em; margin: 25px 0 15px 0;">The bottom line</h3>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Users who continuously find value in a product are more likely to tell their friends about it. Frequent usage creates more opportunities to encourage people to invite their friends, broadcast content, and share through word of mouth.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Hooked users become brand evangelists—megaphones for your company, bringing in new users at little or no cost.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Gamification isn't a "one size fits all" solution. What if we had dynamic rewards based on the user since everyone is driven by something different? Personalized and gamified experiences for every user, backed by decades of science-backed research.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I really think we can become the best product on the market at getting users to complete desired actions by tapping into the physiology of what makes users tick.</p>
+    </div>
+
+    <div id="writeup-amsterdam" class="writeup-page">
+        <a class="back-link" onclick="hideWriteup()">← Back</a>
+        <h2>Today I wanted to share a little story</h2>
+        <p style="margin-bottom: 20px; opacity: 0.7;">December 2024</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">10 months ago, I landed in Amsterdam for a conference.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I got off the 9 hour plane ride and had about a half hour before an extremely important sales call.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I didn't know it at the time but this was the deal that would lead me to sell my company for millions at 24.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">(Laugh) …Only issue was my laptop was dead and I didn't bring a European adapter.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I'm not kidding when I tell you this. I literally ran up and down the streets of Amsterdam asking anyone who would listen to help.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I was 3 minutes away from the call and on my last resort.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I ended up giving a man at the front desk of a gym my ID, my wallet and passport as collateral to borrow his charger.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I made it on the call only 1 minute late and closed the deal.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">And while I don't recommend giving a random person all of your belongings in a foreign country… the point I'm trying to make is that sometimes you have to create your destiny with what you're given.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">And this lesson started right here at Butler just a few years ago.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I always knew I wanted to be an entrepreneur but at the time, Butler didn't offer a specific class or major that fit my purpose.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I had 3 credit hours remaining at Butler and instead of taking a class I decided that I would use this as an opportunity to learn the ropes of starting a business.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I didn't really know what the business was going to be or if how this would work but as we all know. Life is won by people who say yes and figure it out later. Not those who wait.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">So I sent a cold email to some guy named Nick.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">He responded out of the blue to meet for coffee and eventually decided to sponsor me in starting Zealot as well as knocking out those 3 credits.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Nick and I carved out a path that allowed me to study entrepreneurship in a way that felt authentic to me and I hope can feel the same way for you all.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I can honestly say that getting the chance to study entrepreneurship at Butler changed my life.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Because in just under 24 months, we went from a measly Figma mockup I built in Econ class to just weeks ago selling Zealot and getting featured in Times Square.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">That's really the heart of what I want to share with you today - just because something doesn't exist doesn't mean it's impossible.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Entrepreneurship, at its core, is about building something from nothing.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Don't assume that because the exact role, major, or path doesn't exist that it can't be done.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I'm sure a lot of you are sitting here today dreaming of launching your own business. Wherever, in education, in tech, in the arts, whatever it may be.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">And my advice to you would be don't wait for the perfect opportunity to show up.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">The world needs people who are willing to create doors where none exist… people who are willing to run down the streets of Amsterdam with three minutes to spare and just figure it out.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">A lot of people believe that you can only start a business when you're ready. "When you've learned enough" when you have enough resources.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">But the truth is - I wasn't ready either, there's never going to be a perfect time.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">The absolute best advice I have and not to rip off Nike is to "just do it".</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I'll leave you with a quote I think about a lot: "You don't learn to swim by reading about it, you learn by jumping in."</p>
+    </div>
+
+    <div id="writeup-onion" class="writeup-page">
+        <a class="back-link" onclick="hideWriteup()">← Back</a>
+        <h2>Stop solving the wrong problem</h2>
+        <p style="margin-bottom: 20px; opacity: 0.7;">January 2025</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Most products solve surface-level problems. I call these "outside the onion" solutions.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">They're like Tums for heartburn. Sure, Tums makes the burning sensation go away. But you only get heartburn because you ate fried food or too many carbs in the first place.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">The real solution? Don't eat shitty food.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">But that's harder to sell than a $5 bottle of antacids. So companies keep building products that treat symptoms instead of solving root causes.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Think about it:</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;">Productivity apps help you manage your overflowing todo list. The real problem? You're saying yes to too many things.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;">Sleep tracking apps monitor your terrible sleep. The real problem? You're staring at screens until midnight.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;">Meal kit subscriptions make healthy eating convenient. The real problem? You never learned to cook.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">The outside of the onion is where most entrepreneurs build. It's easier. It's more comfortable. People will pay for quick fixes.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">But the real opportunity is at the core of the onion. The stuff that actually changes lives.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">That's where the hard problems live. The ones that require people to change behavior, not just buy a product.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">So next time you're building something, ask yourself: Am I selling Tums, or am I helping people stop eating shit?</p>
+    </div>
+
+    <script>
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            
+            header.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+
+        function showWriteup(id) {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('writeup-' + id).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function hideWriteup() {
+            document.getElementById('main-content').style.display = 'block';
+            document.querySelectorAll('.writeup-page').forEach(page => {
+                page.classList.remove('active');
+            });
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
