@@ -22,8 +22,14 @@
         }
         
         header {
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             padding-bottom: 20px;
+            border-bottom: 1px solid #000;
+        }
+        
+        .intro {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
             border-bottom: 1px solid #000;
         }
         
@@ -144,12 +150,18 @@
         .back-link:hover {
             opacity: 0.7;
         }
+
+        .intro p {
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
     </style>
 </head>
 <body>
     <div id="main-content">
         <header>
             <h1>Sam Farber</h1>
+            <p style="margin: 10px 0 15px 0; opacity: 0.7;">Currently living in Chicago, trying to become a human API.</p>
             <div class="contact">
                 <a href="mailto:hisamfarber@gmail.com">hisamfarber@gmail.com</a>
                 <a href="https://www.linkedin.com/in/samuel-farber" target="_blank">LinkedIn</a>
@@ -165,10 +177,11 @@
                 </div>
                 <div class="item">
                     <h3>2024-2025: CEO & Co-Founder, Zealot (Acquired by UserEvidence)</h3>
-                    <p>Turned a $45 dollar investment into a multi-million dollar acquisition at 24.</p>
-                    <p>I founded Zealot at 23 and exited in 18 months. I took the company from a dorm-room idea to a successful acquisition by UserEvidence.</p>
-                    <p>I raised VC funding for Zealot and pivoted the company. I led the sales and product efforts to close 7-figure deals with Enterprise B2B companies including Cisco, Airtable, ClickUp, Carta, Infor, etc.</p>
-                    <p>Sold Zealot to UserEvidence for upper 7 figures.</p>
+                    <p>Turned a $45 investment into a multi-million dollar exit at 24.</p>
+                    <p>Founded Zealot at 23. Went from dorm-room idea to acquisition in 18 months.</p>
+                    <p>Pivoted the entire company from a DTC Shopify plug serving ecom brands with ACVs of $1-3K to raising VC funding and leading GTM, sales and product to close 7-figure deals with public companies and fast growing startups like Cisco, Airtable, ClickUp, Carta, Yubico, and more.</p>
+                    <p>Sold to UserEvidence for upper 7 figures.</p>
+                    <p>Fun stories from building this: <a href="https://www.linkedin.com/posts/samuel-farber_tbh-didnt-think-id-ever-share-this-publicly-activity-7366513656265654276-iBX1" target="_blank">the real story</a>, <a href="https://www.linkedin.com/feed/update/urn:li:activity:7278789454138355715/" target="_blank">early days</a>, <a href="https://www.linkedin.com/posts/samuel-farber_we-were-24-hours-away-from-our-first-ever-activity-7416861893908373504-VqqS" target="_blank">almost died</a></p>
                 </div>
                 <div class="item">
                     <h3>2024: Chief of Staff, Inevitable Outcomes</h3>
@@ -296,7 +309,7 @@
             <div class="section-header" onclick="toggleSection(this)">Yearly Misogis</div>
             <div class="section-content">
                 <div class="item">
-                    <h3>2026: Run a sprint triathlon under 2 hours</h3>
+                    <h3>2026: Complete a sprint triathlon in 1 hour & 30 minutes (Pending)</h3>
                     <p>750m swim, 20km bike ride, and 5km run. August 25.</p>
                     <p>Goal: 90 mins total</p>
                     <p>15min swim (2:00/100m pace) → 3min transition → 40min bike (30km/h ride) → 2min transition → 30min run (6min/km)</p>
@@ -335,19 +348,19 @@
             <div class="section-header" onclick="toggleSection(this)">Write-ups</div>
             <div class="section-content">
                 <div class="item">
-                    <h3><a href="javascript:void(0);" onclick="showWriteup('onion')">Your product is just expensive Tums</a></h3>
-                    <div class="meta">January 2025</div>
-                    <p>You're treating symptoms, not solving the actual problem.</p>
+                    <h3><a href="javascript:void(0);" onclick="showWriteup('onion')">Entrepreneurship is like an onion</a></h3>
+                    <div class="meta">January 2026</div>
+                    <p>Most people stay on the outside. The real problems are at the core.</p>
                 </div>
                 <div class="item">
                     <h3><a href="javascript:void(0);" onclick="showWriteup('amsterdam')">How I closed a million-dollar deal with a stranger's charger</a></h3>
-                    <div class="meta">December 2024</div>
-                    <p>I gave a gym employee my passport, wallet, and ID. Three minutes left.</p>
+                    <div class="meta">October 2025</div>
+                    <p>Three minutes left. No charger. Started running.</p>
                 </div>
                 <div class="item">
                     <h3><a href="javascript:void(0);" onclick="showWriteup('gamification')">Why gamification fails (and how to fix it)</a></h3>
-                    <div class="meta">January 2025</div>
-                    <p>Most companies use points to trick users into doing what they want. That's backwards.</p>
+                    <div class="meta">March 2025</div>
+                    <p>Points and badges don't work. Here's what does.</p>
                 </div>
             </div>
         </div>
@@ -588,7 +601,7 @@
     <div id="writeup-gamification" class="writeup-page">
         <a class="back-link" onclick="hideWriteup()">← Back</a>
         <h2>Why gamification fails (and how to fix it)</h2>
-        <p style="margin-bottom: 20px; opacity: 0.7;">January 2025</p>
+        <p style="margin-bottom: 20px; opacity: 0.7;">March 2025</p>
         
         <p style="line-height: 1.7; margin-bottom: 15px;"><strong>The problem with most gamification:</strong> Companies use points, badges, and leaderboards to trick users into doing what the organization wants. That's backwards.</p>
         
@@ -675,8 +688,8 @@
 
     <div id="writeup-amsterdam" class="writeup-page">
         <a class="back-link" onclick="hideWriteup()">← Back</a>
-        <h2>Today I wanted to share a little story</h2>
-        <p style="margin-bottom: 20px; opacity: 0.7;">December 2024</p>
+        <h2>How I closed a million-dollar deal with a stranger's charger</h2>
+        <p style="margin-bottom: 20px; opacity: 0.7;">October 2025</p>
         
         <p style="line-height: 1.7; margin-bottom: 15px;">10 months ago, I landed in Amsterdam for a conference.</p>
         
@@ -737,32 +750,32 @@
 
     <div id="writeup-onion" class="writeup-page">
         <a class="back-link" onclick="hideWriteup()">← Back</a>
-        <h2>Stop solving the wrong problem</h2>
-        <p style="margin-bottom: 20px; opacity: 0.7;">January 2025</p>
+        <h2>Entrepreneurship is like an onion</h2>
+        <p style="margin-bottom: 20px; opacity: 0.7;">January 2026</p>
         
-        <p style="line-height: 1.7; margin-bottom: 15px;">Most products solve surface-level problems. I call these "outside the onion" solutions.</p>
+        <p style="line-height: 1.7; margin-bottom: 15px;">The deeper you peel, the closer you get to the root problem.</p>
         
-        <p style="line-height: 1.7; margin-bottom: 15px;">They're like Tums for heartburn. Sure, Tums makes the burning sensation go away. But you only get heartburn because you ate fried food or too many carbs in the first place.</p>
+        <p style="line-height: 1.7; margin-bottom: 15px;">Most people never peel. They stay on the outside because it's all they know. Building another social network. Another student app. Another surface solution.</p>
         
-        <p style="line-height: 1.7; margin-bottom: 15px;">The real solution? Don't eat shitty food.</p>
+        <p style="line-height: 1.7; margin-bottom: 15px;">They start with the solution. Not the problem.</p>
         
-        <p style="line-height: 1.7; margin-bottom: 15px;">But that's harder to sell than a $5 bottle of antacids. So companies keep building products that treat symptoms instead of solving root causes.</p>
+        <p style="line-height: 1.7; margin-bottom: 15px;">Take Tums. Tums stops heartburn. But you only get heartburn from eating fried food and carbs. The real solution? Stop eating shit.</p>
         
-        <p style="line-height: 1.7; margin-bottom: 15px;">Think about it:</p>
+        <p style="line-height: 1.7; margin-bottom: 15px;">But selling Tums is easier than fixing your diet. So companies build products that treat symptoms instead of solving root causes.</p>
         
-        <p style="line-height: 1.7; margin-bottom: 10px;">Productivity apps help you manage your overflowing todo list. The real problem? You're saying yes to too many things.</p>
+        <p style="line-height: 1.7; margin-bottom: 15px;">More examples:</p>
         
-        <p style="line-height: 1.7; margin-bottom: 10px;">Sleep tracking apps monitor your terrible sleep. The real problem? You're staring at screens until midnight.</p>
+        <p style="line-height: 1.7; margin-bottom: 10px;">Productivity apps manage your todo list. Real problem? You say yes to too much.</p>
         
-        <p style="line-height: 1.7; margin-bottom: 10px;">Meal kit subscriptions make healthy eating convenient. The real problem? You never learned to cook.</p>
+        <p style="line-height: 1.7; margin-bottom: 10px;">Sleep apps track your bad sleep. Real problem? You stare at screens until midnight.</p>
         
-        <p style="line-height: 1.7; margin-bottom: 15px;">The outside of the onion is where most entrepreneurs build. It's easier. It's more comfortable. People will pay for quick fixes.</p>
+        <p style="line-height: 1.7; margin-bottom: 10px;">Meal kits make eating healthy easy. Real problem? You never learned to cook.</p>
         
-        <p style="line-height: 1.7; margin-bottom: 15px;">But the real opportunity is at the core of the onion. The stuff that actually changes lives.</p>
+        <p style="line-height: 1.7; margin-bottom: 15px;">The outside of the onion is comfortable. It's easy. People pay for quick fixes.</p>
         
-        <p style="line-height: 1.7; margin-bottom: 15px;">That's where the hard problems live. The ones that require people to change behavior, not just buy a product.</p>
+        <p style="line-height: 1.7; margin-bottom: 15px;">The core is where the hard problems live. The ones that require people to change behavior, not just buy a product.</p>
         
-        <p style="line-height: 1.7; margin-bottom: 15px;">So next time you're building something, ask yourself: Am I selling Tums, or am I helping people stop eating shit?</p>
+        <p style="line-height: 1.7; margin-bottom: 15px;">So ask yourself: Are you selling Tums? Or are you helping people stop eating shit?</p>
     </div>
 
     <script>
