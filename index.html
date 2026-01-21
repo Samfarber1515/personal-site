@@ -142,10 +142,12 @@
         .image-gallery img {
             flex: 0 0 auto;
             width: 300px;
-            height: auto;
+            max-height: 400px;
+            object-fit: contain;
             border-radius: 8px;
             transition: transform 0.3s ease;
             cursor: pointer;
+            background: #f5f5f5;
         }
 
         .image-gallery img:hover {
