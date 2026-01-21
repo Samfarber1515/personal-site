@@ -49,15 +49,25 @@
             display: flex;
             gap: 20px;
             font-size: 0.95em;
+            align-items: center;
         }
         
         .contact a {
             color: #0000EE;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         
         .contact a:hover {
             text-decoration: underline;
+        }
+        
+        .contact img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
         }
         
         .section {
@@ -205,13 +215,20 @@
             <p style="margin: 10px 0 15px 0; opacity: 0.7;">Currently living in Chicago, trying to become a human API.</p>
             <div class="contact">
                 <a href="mailto:hisamfarber@gmail.com">hisamfarber@gmail.com</a>
-                <a href="https://www.linkedin.com/in/samuel-farber" target="_blank">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/samuel-farber" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+                    LinkedIn
+                </a>
+                <a href="https://www.goodreads.com/friend/i?invite_token=NGVkNDFmODYtMmRiZi00Mzc1LThiOWUtYTg1ZGFhNjg2NGFl" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Goodreads_logo_-_SuperTinyIcons.svg" alt="Goodreads">
+                    Goodreads
+                </a>
             </div>
         </header>
 
         <main>
         <div class="section">
-            <div class="section-header" onclick="toggleSection(this)">How I've Spent My Time</div>
+            <div class="section-header" onclick="toggleSection(this)">My Life</div>
             <div class="section-content">
                 <div class="item">
                     <h3>2025-Present: Product @ UE Labs, UserEvidence</h3>
@@ -413,7 +430,7 @@
         </div>
 
         <div class="section">
-            <div class="section-header" onclick="toggleSection(this)">Write-ups</div>
+            <div class="section-header" onclick="toggleSection(this)">Thoughts</div>
             <div class="section-content">
                 <div class="item">
                     <h3><a href="javascript:void(0);" onclick="showWriteup('onion')">Entrepreneurship is like an onion</a></h3>
@@ -443,6 +460,31 @@
         </div>
 
         <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">How I Think About My Body</div>
+            <div class="section-content">
+                <div class="item">
+                    <h3>The Two Things That Matter</h3>
+                    <p>I've simplified my entire fitness routine down to 2 things. If I do these, I'm good:</p>
+                    <p>1. <strong>Morning workout</strong> - Usually swimming around 1,000 yards</p>
+                    <p>2. <strong>Don't eat foods from aisles</strong> - Perimeter shopping only.</p>
+                </div>
+                <div class="item">
+                    <h3>Annual Check-ins</h3>
+                    <p><strong>Blood panel</strong> - I paste my results into Claude and ask what I'm deficient in, then buy supplements to fix them. Helps me see what needs bolstering.</p>
+                    <p><strong>Full body scan through Ezra</strong> - Annual preventative screening.</p>
+                </div>
+                <div class="item">
+                    <h3>Daily Habits I Try to Hit</h3>
+                    <p>• Get sunlight right when I wake up</p>
+                    <p>• Green tea in the morning from <a href="https://www.japanteastudio108.com/" target="_blank">Japanese Tea Studio 108</a></p>
+                    <p>• Just fruit till lunch</p>
+                    <p>• Night walk</p>
+                    <p>• Sauna before bed</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
             <div class="section-header" onclick="toggleSection(this)">Travel Itineraries</div>
             <div class="section-content">
                 <div class="item">
@@ -458,7 +500,7 @@
         </div>
 
         <div class="section">
-            <div class="section-header" onclick="toggleSection(this)">Business Ideas</div>
+            <div class="section-header" onclick="toggleSection(this)">Ideas You Should Steal</div>
             <div class="section-content">
                 <div class="item">
                     <h3>Personal Care & Health</h3>
