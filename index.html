@@ -172,6 +172,63 @@
             background: #555;
         }
 
+        .carousel {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 15px 0;
+            margin: 10px 0 25px 0;
+            scroll-snap-type: x mandatory;
+        }
+
+        .carousel-item {
+            position: relative;
+            flex: 0 0 auto;
+            width: 300px;
+            height: 400px;
+            scroll-snap-align: start;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 8px 10px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+
+        .carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .carousel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .carousel::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .carousel::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
         .writeup-page {
             display: none;
         }
@@ -320,54 +377,59 @@
             <div class="section-header" onclick="toggleSection(this)">Mini Adventures</div>
             <div class="section-content">
                 <div class="item">
-                    <h3>Upcoming</h3>
-                    <p>• Guatemala yoga retreat (March 2026)</p>
-                    <p>• Backpacking/Hiking Machu Picchu (May 2026)</p>
-                    <p>• Triathlon (August 2026)</p>
-                    <p>• Commit a year or less to getting my name in the Guinness world record book</p>
-                    <p>• Walk from SF to NYC</p>
-                    <p>• Become a product manager for the government</p>
-                    <p>• 300 Club in Antarctica</p>
-                    <p>• Work at McDonald's for 6 months</p>
-                    <p>• Learn how to play saxophone</p>
-                    <p>• Do 50 pull ups at once</p>
-                    <p>• Live in a foreign country</p>
-                    <p>• Visit Taiwan</p>
-                    <p>• Visit Sri Lanka</p>
-                    <p>• Go to a public speaking camp</p>
-                    <p>• Do a solo 12 hour walk outside with no phone or convo</p>
-                    <p>• Polar plunge Knick glacier</p>
-                    <p>• Tomorrowland 2027</p>
-                    <p>• Visit all 50 states in one year</p>
-                    <p>• Do an Improv class</p>
-                    <p>• Get on a game show as a contestant</p>
-                    <p>• Go to a rock and roll concert</p>
-                    <p>• Fly in a hot air balloon in Turkey</p>
-                    <p>• Cage dive with sharks</p>
-                    <p>• Sand skiing in Huacachina Peru</p>
-                    <p>• Attend a wedding in a foreign country</p>
-                    <p>• Nile River cruise</p>
-                    <p>• See the cherry blossoms in Japan</p>
-                    <p>• Albania</p>
-                    <p>• Bosnia</p>
-                    <p>• Romania</p>
-                    <p>• Georgia</p>
+                    <h3>2026</h3>
+                    <div class="carousel">
+                        <figure class="carousel-item">
+                            <img src="https://gcdnb.pbrd.co/images/zqUkkVTgAsBl.jpg?o=1" alt="First bass caught ice fishing">
+                            <figcaption class="carousel-caption">First bass caught ice fishing.</figcaption>
+                        </figure>
+                    </div>
                 </div>
                 <div class="item">
-                    <h3>Completed</h3>
-                    <p>• Road Trip Through Iceland</p>
-                    <p>• Go to the Magic Lounge in Chicago</p>
-                    <p>• Skydiving</p>
-                    <p>• Cold plunge in the arctic ocean in Tromso, Norway</p>
-                    <p>• Chiang Mai Lantern Festival</p>
-                    <p>• Study Abroad in Barcelona</p>
-                    <p>• Play Division 1 Football, WR</p>
-                    <p>• Go white water rafting</p>
-                    <p>• Pet an elephant</p>
-                    <p>• Ice fishing</p>
-                    <img src="https://gcdnb.pbrd.co/images/zqUkkVTgAsBl.jpg?o=1" alt="Ice fishing" style="width: 100%; max-width: 400px; border-radius: 8px; margin-top: 15px; display: block;">
-                    <p style="margin-top: 20px;">• Skiing in Banff</p>
-                    <img src="https://gcdnb.pbrd.co/images/8PneEMHuEKe2.jpg?o=1" alt="Skiing in Banff" style="width: 100%; max-width: 400px; border-radius: 8px; margin-top: 15px; display: block;">
+                    <h3>2025</h3>
+                    <div class="carousel">
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/KE3mTMA.jpeg" alt="Skiing in Vail">
+                            <figcaption class="carousel-caption">Skiing in Vail.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/qDEAVXT.png" alt="Getting ready to pitch 10 VCs in one day in NYC">
+                            <figcaption class="carousel-caption">Getting ready to pitch 10 VCs in one day in NYC.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/MwrUcg5.png" alt="Me after getting zero yeses from VCs">
+                            <figcaption class="carousel-caption">Me after getting zero yeses from VCs.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/fst44J5.jpeg" alt="Skiing in Banff">
+                            <figcaption class="carousel-caption">Skiing in Banff.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/94uuft0.jpg" alt="Go Cubs">
+                            <figcaption class="carousel-caption">Go Cubs.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3>2024</h3>
+                    <div class="carousel">
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/bXQTQKc.png" alt="Jumping into the Arctic harbor in Tromso at 4 degrees C">
+                            <figcaption class="carousel-caption">Jumping into the Arctic harbor in Tromso at 4 degrees C. It was cold.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/QKWSrDF.jpeg" alt="Seeing the northern lights in Tromso">
+                            <figcaption class="carousel-caption">Seeing the northern lights in Tromso.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/dcpNbto.jpeg" alt="Feeding reindeer in the wild">
+                            <figcaption class="carousel-caption">Feeding reindeer in the wild.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/IM5kkvp.jpg" alt="Gainsight Conference in Amsterdam">
+                            <figcaption class="carousel-caption">Gainsight Conference in Amsterdam.</figcaption>
+                        </figure>
+                    </div>
                 </div>
             </div>
         </div>
