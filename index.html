@@ -1,590 +1,1357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>[unmask] — People Intelligence</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --ink:#0C0B0A;
-  --paper:#E8E4DC;
-  --ember:#E8521A;
-  --bone:#6B6760;
-  --mid:#A8A29A;
-  --rule:#1E1C1A;
-  --code:#141210;
-  --surface:#161412;
-  --green:#3D9A6A;
-  --red:#E05252;
-}
-html{font-size:16px;scroll-behavior:smooth}
-body{background:var(--ink);color:var(--paper);font-family:'DM Sans',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,#2a2825 1px,transparent 1px);background-size:24px 24px;opacity:0.3;pointer-events:none;z-index:0}
-.mono{font-family:'JetBrains Mono',monospace}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam Farber</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #000;
+        }
+        
+        .intro {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #000;
+        }
+        
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,72px);height:52px;border-bottom:1px solid var(--rule);background:rgba(12,11,10,0.95);backdrop-filter:blur(12px)}
-.logo{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;letter-spacing:0.04em;color:var(--paper);display:flex;align-items:center;gap:2px}
-.logo-b{color:var(--ember)}
-.nav-links{display:flex;align-items:center;gap:32px}
-.nav-link{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--bone);text-decoration:none;transition:color 0.15s}
-.nav-link::before{content:'// ';color:var(--rule)}
-.nav-link:hover{color:var(--paper)}
-.nav-link:hover::before{color:var(--ember)}
-.nav-cta{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.06em;color:var(--paper);background:var(--ember);border:none;padding:8px 18px;cursor:pointer;transition:opacity 0.15s}
-.nav-cta:hover{opacity:0.85}
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
 
-/* ── SECTIONS ── */
-section{position:relative;z-index:1}
-.container{max-width:1100px;margin:0 auto;padding:0 clamp(20px,5vw,72px)}
-.section-pad{padding:96px clamp(20px,5vw,72px)}
+        .social-icons {
+            display: flex;
+            gap: 8px;
+        }
 
-/* ── LABELS ── */
-.section-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone);display:flex;align-items:center;gap:8px;margin-bottom:28px}
-.section-label::before{content:'//';color:var(--ember);font-weight:600}
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
-/* ── HERO ── */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px clamp(20px,8vw,160px) 60px}
+        .social-icons a:hover {
+            opacity: 0.7;
+        }
 
-.prompt-tag{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--bone);background:var(--code);border:1px solid var(--rule);padding:8px 16px;margin-bottom:44px;display:inline-flex;align-items:center;gap:10px;opacity:0;animation:up 0.4s ease 0.1s forwards}
-.prompt-tag .ps{color:var(--green)}
-.prompt-tag .cursor{width:8px;height:14px;background:var(--ember);display:inline-block;animation:blink 1s step-end infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+        
+        .section {
+            margin-bottom: 10px;
+        }
+        
+        .section-header {
+            padding: 15px 0;
+            cursor: pointer;
+            font-size: 1.1em;
+            user-select: none;
+            border-bottom: 1px solid #000;
+        }
+        
+        .section-header:hover {
+            opacity: 0.7;
+        }
+        
+        .section-header::before {
+            content: '+ ';
+            margin-right: 8px;
+        }
+        
+        .section-header.active::before {
+            content: '− ';
+        }
+        
+        .section-content {
+            display: none;
+            padding: 25px 0;
+        }
+        
+        .section-content.active {
+            display: block;
+        }
+        
+        .item {
+            margin-bottom: 30px;
+        }
+        
+        .item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .item h3 {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .item .meta {
+            font-size: 0.9em;
+            margin-bottom: 12px;
+            opacity: 0.7;
+        }
+        
+        .item p {
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        
+        .item p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .item a {
+            color: #0000EE;
+            text-decoration: underline;
+        }
+        
+        .item a:hover {
+            opacity: 0.7;
+        }
 
-h1{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(52px,9vw,120px);line-height:1.0;letter-spacing:-0.03em;color:var(--paper);opacity:0;animation:up 0.6s ease 0.3s forwards}
-h1 .ember{color:var(--ember)}
-h1 .comment{color:var(--bone);font-weight:300;font-size:0.55em;display:block;letter-spacing:0.01em}
+        .image-gallery {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 15px 0;
+            margin: 20px 0;
+        }
 
-.hero-sub{font-size:clamp(15px,1.6vw,18px);line-height:1.75;color:var(--mid);max-width:560px;margin:28px auto 0;font-weight:300;opacity:0;animation:up 0.5s ease 0.5s forwards}
-.inline-code{font-family:'JetBrains Mono',monospace;font-size:0.85em;color:var(--paper);background:var(--code);border:1px solid var(--rule);padding:1px 7px;border-radius:2px}
+        .image-gallery img {
+            flex: 0 0 auto;
+            width: 300px;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            background: #f5f5f5;
+        }
 
-.cta-row{display:flex;align-items:stretch;margin-top:40px;gap:0;opacity:0;animation:up 0.5s ease 0.65s forwards;justify-content:center}
-.btn-primary{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px;letter-spacing:0.04em;color:var(--paper);background:var(--ember);border:none;padding:15px 36px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:opacity 0.15s}
-.btn-primary:hover{opacity:0.87}
-.btn-ghost{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);background:none;border:1px solid var(--rule);border-left:none;padding:15px 28px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:border-color 0.15s,color 0.15s}
-.btn-ghost:hover{border-color:var(--bone);color:var(--paper)}
+        .image-gallery img:hover {
+            transform: scale(1.1);
+        }
 
-/* trust bar */
-.trust-bar{margin-top:56px;border-top:1px solid var(--rule);padding-top:28px;opacity:0;animation:up 0.5s ease 0.85s forwards}
-.trust-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--bone);margin-bottom:16px}
-.trust-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:32px;opacity:0.3}
-.trust-logo{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid)}
+        .image-gallery::-webkit-scrollbar {
+            height: 8px;
+        }
 
-/* ── TERMINAL BLOCK ── */
-.terminal{background:var(--code);border:1px solid var(--rule);overflow:hidden;margin-top:52px;max-width:600px;width:100%;text-align:left;opacity:0;animation:up 0.6s ease 0.9s forwards}
-.term-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--rule);background:#0f0e0d}
-.dot{width:10px;height:10px;border-radius:50%}
-.dot-r{background:#FF5F57}.dot-y{background:#FEBC2E}.dot-g{background:#28C840}
-.term-body{padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.9}
-.t-dim{color:var(--bone)}.t-ember{color:var(--ember)}.t-green{color:var(--green)}.t-white{color:var(--paper)}.t-mid{color:var(--mid)}.t-red{color:var(--red)}
-span.line{display:block}
+        .image-gallery::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
 
-/* ── STAT BAND ── */
-.stat-band{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.stat-cell{padding:32px clamp(16px,3vw,48px);border-right:1px solid var(--rule)}
-.stat-cell:last-child{border-right:none}
-.stat-num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(32px,4vw,52px);color:var(--ember);line-height:1;margin-bottom:8px}
-.stat-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--bone);line-height:1.5}
-.stat-label em{display:block;color:var(--mid);font-style:normal;font-size:10px;margin-top:4px}
+        .image-gallery::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
 
-/* ── SECTION HEADINGS ── */
-h2{font-family:'JetBrains Mono',monospace;font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--paper)}
-h3{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:15px;color:var(--paper);margin-bottom:10px;letter-spacing:-0.01em}
+        .image-gallery::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
 
-/* ── BLOCKS / CARDS ── */
-.block{background:var(--code);border:1px solid var(--rule);padding:28px}
-.block-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ember);margin-bottom:14px;font-weight:600}
-.block p{font-size:13px;color:var(--mid);line-height:1.7}
-.block.accent{border-top:2px solid var(--ember)}
+        .image-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 15px 0 0 0;
+        }
 
-/* ── TABLE ── */
-.data-table{width:100%;border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:12px}
-.data-table th{padding:12px 20px;text-align:left;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--bone);border-bottom:1px solid var(--rule);font-weight:600}
-.data-table td{padding:16px 20px;border-bottom:1px solid var(--rule);color:var(--mid);vertical-align:top}
-.data-table tr:hover td{background:rgba(232,82,26,0.03)}
-.grade{font-weight:700;font-size:24px;font-family:'JetBrains Mono',monospace}
-.grade-a{color:var(--ember)}.grade-b{color:var(--paper)}.grade-c{color:var(--red)}
-.name-bold{color:var(--paper);font-weight:600}
-.tag{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--rule);padding:2px 8px;color:var(--bone)}
-.tag.risk{border-color:rgba(224,82,82,0.4);color:var(--red)}
-.tag.good{border-color:rgba(61,154,106,0.4);color:var(--green)}
-.tag.warn{border-color:rgba(232,82,26,0.4);color:var(--ember)}
+        .image-row img {
+            width: 48%;
+            max-width: 260px;
+            border-radius: 8px;
+            object-fit: contain;
+            background: #f5f5f5;
+        }
 
-/* ── MOAT GRID ── */
-.moat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule)}
-.moat-cell{background:var(--code);padding:28px}
-.moat-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ember);font-weight:600;margin-bottom:10px;letter-spacing:0.04em}
+        .carousel {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 15px 0;
+            margin: 10px 0 25px 0;
+            scroll-snap-type: x mandatory;
+        }
 
-/* ── CASE STUDY ── */
-.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule)}
-.case-cell{background:var(--code);padding:32px}
-.case-cell.accent{border-top:2px solid var(--ember)}
-.big-num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:48px;line-height:1;margin-bottom:4px}
+        .carousel-item {
+            position: relative;
+            flex: 0 0 auto;
+            width: 300px;
+            height: 400px;
+            scroll-snap-align: start;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
 
-/* ── STEPS ── */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);min-width:0}
-.step{background:var(--code);padding:36px;min-width:0;word-break:break-word}
-.step-num{font-family:'JetBrains Mono',monospace;font-size:36px;font-weight:700;color:var(--ember);opacity:0.3;margin-bottom:20px;letter-spacing:-0.02em}
-.step:hover .step-num{opacity:1}
-.step p{font-size:13px;color:var(--mid);line-height:1.7;margin-top:8px}
-.tool-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
-/* ── PRICING ── */
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule)}
-.price-cell{background:var(--code);padding:32px}
-.price-cell.featured{border-top:2px solid var(--ember)}
-.price-num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:36px;color:var(--ember);line-height:1;margin-bottom:4px}
-.price-period{font-size:12px;color:var(--bone)}
-.price-list{margin-top:20px;space-y:8px}
-.price-item{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mid);line-height:1.8;display:flex;gap:8px}
-.price-item::before{content:'→';color:var(--ember);flex-shrink:0}
+        .carousel-caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 8px 10px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
 
-/* ── TESTIMONIALS ── */
-.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule)}
-.quote-cell{background:var(--code);padding:32px}
-.quote-text{font-size:15px;color:var(--paper);line-height:1.7;font-weight:300;font-style:italic;margin-bottom:20px}
-.quote-source{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--bone);border-top:1px solid var(--rule);padding-top:14px}
-.quote-source strong{color:var(--ember);display:block;font-size:12px;margin-bottom:2px}
+        .carousel::-webkit-scrollbar {
+            height: 8px;
+        }
 
-/* ── FOUNDER LETTER ── */
-.letter{background:#f7f4ef;color:#1a1a1a;padding:56px;max-width:680px;margin:0 auto}
-.letter-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid #d0ccc4}
-.letter-logo{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;color:#E8521A}
-.letter-date{font-family:'JetBrains Mono',monospace;font-size:11px;color:#999}
-.letter-body{font-family:'Georgia',serif;font-size:16px;line-height:1.9;color:#2a2a2a}
-.letter-body p{margin-bottom:16px}
-.letter-qs{margin:24px 0;padding:0 0 0 24px;border-left:2px solid #d0ccc4;font-style:italic;color:#555}
-.letter-qs p{margin-bottom:8px}
-.letter-sign{margin-top:40px;font-family:'Georgia',serif;font-size:22px;font-style:italic;color:#1a1a1a}
-.letter-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-top:4px}
+        .carousel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
 
-/* ── FINAL CTA ── */
-.final-cta{text-align:center;padding:120px clamp(20px,8vw,160px)}
-.final-h{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(36px,6vw,80px);line-height:1.05;letter-spacing:-0.03em;color:var(--paper);margin-bottom:24px}
-.final-h .ember{color:var(--ember)}
-.final-sub{font-size:16px;color:var(--mid);max-width:420px;margin:0 auto 40px;line-height:1.7}
-.final-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--bone);margin-top:16px;letter-spacing:0.06em}
+        .carousel::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
 
-/* ── FOOTER ── */
-footer{border-top:1px solid var(--rule);padding:32px clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.footer-logo{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:var(--ember)}
-.footer-links{display:flex;gap:28px}
-.footer-link{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--bone);text-decoration:none;transition:color 0.15s}
-.footer-link:hover{color:var(--paper)}
-.footer-copy{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--rule)}
+        .carousel::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
 
-/* ── DIVIDERS ── */
-.border-t{border-top:1px solid var(--rule)}
-.py-96{padding-top:96px;padding-bottom:96px}
-.py-64{padding-top:64px;padding-bottom:64px}
-.px-page{padding-left:clamp(20px,5vw,72px);padding-right:clamp(20px,5vw,72px)}
+        .writeup-page {
+            display: none;
+        }
 
-@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+        .writeup-page.active {
+            display: block;
+        }
 
-@media(max-width:768px){
-  nav{padding:0 16px}
-  .nav-links{display:none}
-  .hero{padding:80px 20px 48px;min-height:auto}
-  h1{font-size:clamp(44px,12vw,72px)}
-  .cta-row{flex-direction:column;width:100%}
-  .btn-primary,.btn-ghost{width:100%;justify-content:center;border-left:1px solid var(--rule)}
-  .trust-bar{margin-top:40px}
-  .trust-logos{gap:20px}
-  .py-96{padding-top:64px;padding-bottom:64px}
-  .px-page{padding-left:20px;padding-right:20px}
-  .container{padding:0}
-  .steps{grid-template-columns:1fr}
-  .moat-grid{grid-template-columns:1fr}
-  .case-grid{grid-template-columns:1fr}
-  .quote-grid{grid-template-columns:1fr}
-  .price-grid{grid-template-columns:1fr}
-  div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;gap:32px!important}
-  div[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important}
-  div[style*="grid-template-columns:repeat(2,1fr)"]{grid-template-columns:1fr!important}
-  div[style*="grid-template-columns:auto 1fr"]{grid-template-columns:1fr!important}
-  .big-num{font-size:40px}
-  .letter{padding:32px 24px}
-  .moat-cell{padding:20px}
-  .step{padding:24px}
-  div[style*="font-size:clamp(72px"]{font-size:56px!important}
-  .final-cta{padding:64px 20px}
-  .final-h{font-size:clamp(32px,10vw,56px)}
-  footer{flex-direction:column;gap:20px;text-align:center}
-  .footer-links{flex-wrap:wrap;justify-content:center;gap:16px}
-}
-</style>
+        .back-link {
+            color: #0000EE;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            opacity: 0.7;
+        }
+
+        .intro p {
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+    </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav>
-  <div class="logo"><span class="logo-b">[</span>unmask<span class="logo-b">]</span></div>
-  <div class="nav-links">
-    <a href="#how" class="nav-link">how_it_works</a>
-    <a href="#pricing" class="nav-link">pricing</a>
-    <a href="#case" class="nav-link">case_study</a>
-  </div>
-  <button class="nav-cta">→ get_early_access()</button>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <!-- G2 badge -->
-  <div style="display:inline-flex;align-items:center;gap:12px;background:var(--code);border:1px solid var(--rule);padding:9px 18px;margin-bottom:44px;opacity:0;animation:up 0.4s ease 0.1s forwards">
-    <span style="color:#FF4D00;font-size:14px;letter-spacing:1px">★★★★★</span>
-    <span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:var(--paper)">4.9</span>
-    <div style="width:1px;height:16px;background:var(--rule)"></div>
-    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--bone)">3,000+ reviews on</span>
-    <div style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-      <svg viewBox="-36.72 -19.24 748.01 780.17" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g fill="#ff492c"><path d="m501.22 521c26.9 46.68 53.5 92.83 80.08 138.93-117.7 90.11-300.82 101-436.38-2.77-156-119.51-181.64-323.43-98.12-470.22 96.06-168.84 275.82-206.18 391.56-178.8-3.13 6.8-72.45 150.61-72.45 150.61s-5.48.36-8.58.42c-34.21 1.45-59.69 9.41-87 23.53a206.93 206.93 0 0 0 -109.84 159.76 201.71 201.71 0 0 0 13.68 100.29c11 26.82 26.56 50.64 47.42 70.75 32 30.88 70.08 50 114.22 56.33 41.8 6 82 .06 119.67-18.87 14.13-7.09 26.15-14.92 40.2-25.66 1.79-1.16 3.38-2.63 5.54-4.3z"/><path d="m501.48 111.61c-6.83-6.72-13.16-12.92-19.46-19.16-3.76-3.72-7.38-7.59-11.23-11.22-1.38-1.31-3-3.1-3-3.1s1.31-2.78 1.87-3.92c7.37-14.79 18.92-25.6 32.62-34.2a90.65 90.65 0 0 1 50.72-14.01c22.93.45 44.25 6.16 62.24 21.54 13.28 11.35 20.09 25.75 21.29 42.94 2 29-10 51.21-33.83 66.71-14 9.12-29.1 16.17-44.24 24.52-8.35 4.61-15.49 8.66-23.65 17-7.18 8.37-7.53 16.26-7.53 16.26l108.47-.14v48.31h-167.43v-4.67c-.64-23.74 2.13-46.08 13-67.64 10-19.78 25.54-34.26 44.21-45.41 14.38-8.59 29.52-15.9 43.93-24.45 8.89-5.27 15.17-13 15.12-24.21 0-9.62-7-18.17-17-20.84-23.58-6.36-47.58 3.79-60.06 25.37-1.82 3.15-3.68 6.28-6.04 10.32zm209.81 358.04-91.41-157.86h-180.89l-92 159.49h182.22l89.92 157.11z"/></g></svg>
-    </div>
-  </div>
-
-  <h1>
-    unmask<br><span class="ember">your_org<span style="color:var(--bone)">;</span></span>
-  </h1>
-
-  <p class="hero-sub">
-    You're overpaying people who should be fired and underpaying the ones carrying everyone else — you just don't know which is which.
-  </p>
-
-  <div class="cta-row">
-    <button class="btn-primary">→ run_first_scan()</button>
-    <button class="btn-ghost">▷ &nbsp;see_live_demo()</button>
-  </div>
-
-  <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--bone);margin-top:14px;letter-spacing:0.04em;opacity:0;animation:up 0.4s ease 0.8s forwards">// free 30-day trial · no credit card</p>
-
-
-  <div class="trust-bar" style="width:100%;max-width:600px">
-    <div class="trust-label">// trusted_by fast-growing teams at</div>
-    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:36px;opacity:0.35">
-      <svg height="20" viewBox="0 0 60 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700" font-size="16">stripe</text></svg>
-      <svg height="20" viewBox="0 0 100 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="900" font-size="13" letter-spacing="1">RIPPLING</text></svg>
-      <svg height="20" viewBox="0 0 52 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="900" font-size="16">Ramp</text></svg>
-      <svg height="20" viewBox="0 0 44 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="900" font-size="16">Brex</text></svg>
-      <svg height="20" viewBox="0 0 36 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700" font-size="16">Deel</text></svg>
-      <svg height="20" viewBox="0 0 54 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700" font-size="16">Gusto</text></svg>
-      <svg height="20" viewBox="0 0 58 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700" font-size="16">Notion</text></svg>
-      <svg height="20" viewBox="0 0 52 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700" font-size="16">Figma</text></svg>
-      <svg height="20" viewBox="0 0 58 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700" font-size="16">Linear</text></svg>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- PROBLEM -->
-<section class="py-96 px-page border-t">
-  <div class="container" style="max-width:820px">
-    <div class="section-label">the_problem</div>
-
-    <div style="border-left:3px solid var(--ember);padding-left:32px;margin-bottom:36px">
-      <p style="font-size:clamp(22px,2.8vw,34px);color:var(--paper);line-height:1.5;font-weight:700;margin-bottom:20px">"The single biggest problem afflicting large companies is the difficulty of assigning a value to each person's work. For the most part they punt. Salespeople are an exception — easy to measure how much revenue they generate. Everyone else? The company has no way of measuring the value of their work."</p>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--bone);letter-spacing:0.12em;text-transform:uppercase">Paul Graham</p>
-    </div>
-
-    <div style="border-top:1px solid var(--rule);padding-top:28px;margin-bottom:48px">
-      <p style="font-size:clamp(18px,2vw,24px);font-weight:700;color:var(--paper);margin-bottom:4px">That was written in 2004.</p>
-      <p style="font-size:clamp(18px,2vw,24px);font-weight:700;color:var(--ember)">Nothing has changed. Until now.</p>
-    </div>
-
-
-  </div>
-</section>
-
-
-<!-- DASHBOARD -->
-<section class="py-96 px-page border-t" id="how">
-  <div class="container">
-    <div class="section-label">live_report_cards</div>
-    <h2 style="font-size:clamp(28px,4vw,52px);margin-bottom:16px">unmask fixes <span style="color:var(--ember)">org bloat.</span></h2>
-    <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);max-width:560px;line-height:1.7;margin-bottom:36px">Instead of relying on biased annual reviews or whoever has the best vibes, Unmask watches what your team actually does — in the tools they already use — and gives every employee one clear grade based on real output.</p>
-
-    <div style="background:var(--code);border:1px solid var(--rule);overflow:hidden">
-
-      <!-- Bar -->
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-bottom:1px solid var(--rule);background:var(--surface)">
-        <div style="display:flex;align-items:center;gap:8px">
-          <div style="width:7px;height:7px;border-radius:50%;background:#28C840"></div>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--paper);font-weight:600">LIVE</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone)">// acme-corp</span>
-        </div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ember);cursor:pointer">VIEW ALL →</span>
-      </div>
-
-      <!-- Priya — featured -->
-      <div style="border-bottom:1px solid var(--rule);background:rgba(232,82,26,0.04);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px">
-        <div style="display:flex;align-items:center;gap:12px;flex:1">
-          <div style="width:36px;height:36px;flex-shrink:0;background:rgba(232,82,26,0.12);border:1px solid rgba(232,82,26,0.3);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;color:var(--ember)">P.K.</div>
-          <div>
-            <div style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px;color:var(--paper)">priya.k <span style="font-weight:400;color:var(--bone);font-size:11px">· senior_engineer</span></div>
-            <div style="margin-top:5px;display:flex;gap:6px;flex-wrap:wrap">
-              <span class="tag risk" style="font-size:9px;padding:2px 8px">⚠ flight_risk</span>
-              <span class="tag" style="border-color:rgba(224,82,82,0.3);color:var(--red);font-size:9px;padding:2px 8px">underpaid $38K</span>
+    <div id="main-content">
+        <header>
+            <div class="header-top">
+                <h1>Sam Farber</h1>
+                <div class="social-icons">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sam@samfarber.win&su=Hey%20Sam&body=Hey%2C%20it%27s%20Sam.%20If%20you%20decided%20to%20click%20this%20button%2C%20it%20means%20something%20I%20wrote%20resonated%20with%20you!%0D%0A%0D%0AI'm%20glad%20using%20Cursor%20to%20build%20this%20wasn't%20a%20complete%20waste%20of%20time%20%3A)%0D%0A%0D%0AExcited%20to%20meet%20you!%0D%0A%0D%0A--" target="_blank" rel="noopener noreferrer" aria-label="Email" title="Email">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2-.5v.33l8 5.33 8-5.33V5.5H4zm16 13V8.2l-7.45 4.97a1 1 0 0 1-1.1 0L4 8.2v10.3h16z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/samuel-farber" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4.98 3.5C3.34 3.5 2 4.84 2 6.48c0 1.64 1.34 2.98 2.98 2.98 1.63 0 2.97-1.34 2.97-2.98C7.95 4.84 6.61 3.5 4.98 3.5zM2.4 21h5.16V9.6H2.4V21zM9.6 9.6V21h5.16v-6.03c0-3.3 4.27-3.57 4.27 0V21H24v-7.44c0-7.08-8.1-6.82-9.24-3.34V9.6H9.6z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.goodreads.com/friend/i?invite_token=NGVkNDFmODYtMmRiZi00Mzc1LThiOWUtYTg1ZGFhNjg2NGFl" target="_blank" rel="noopener noreferrer" aria-label="Goodreads" title="Goodreads">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M6 3h10a3 3 0 0 1 3 3v13.5a1.5 1.5 0 0 1-2.56 1.06L12 16.12 7.56 20.56A1.5 1.5 0 0 1 5 19.5V6a3 3 0 0 1 3-3zm0 3v11.38l4-4a1.5 1.5 0 0 1 2.12 0l4 4V6H6z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
-          </div>
-        </div>
-        <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:56px;color:var(--ember);line-height:1;flex-shrink:0">A+</div>
-      </div>
+            <p style="margin: 10px 0 15px 0; line-height: 1.7;">I've been building businesses since I was 6 (still haven't nailed that lemonade recipe tho). It's all I've ever known and all I want to do.</p>
+        </header>
 
-      <!-- Marcus -->
-      <div style="border-bottom:1px solid var(--rule);padding:14px 24px;display:flex;align-items:center;justify-content:space-between">
-        <div style="display:flex;align-items:center;gap:12px">
-          <div style="width:32px;height:32px;flex-shrink:0;background:var(--surface);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone)">M.T.</div>
-          <div>
-            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--paper)">marcus.t <span style="color:var(--bone);font-size:10px">· senior_engineer</span></div>
-            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--red);margin-top:3px">↓ coasting · overpaid $42K</div>
-          </div>
+        <main>
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">Quests</div>
+            <div class="section-content">
+                <div class="item">
+                    <h3>2025-Present: Product @ UE Labs, UserEvidence</h3>
+                </div>
+                <div class="item">
+                    <h3>2023-2025: CEO & Co-Founder, Zealot (Acquired by UserEvidence)</h3>
+                    <p>In 2022, while a junior at Butler University making my schedule for senior year, I noticed I only had 3 credit hours left to graduate. As much as I was excited for a blow-off senior year, I had a thought: what if I started a business and somehow got Butler to let me use the business as those 3 credits?</p>
+                    <p>But Butler didn't allow that at the time.</p>
+                    
+                    <p>So I started cold emailing every professor at the business school, pitching them on why they should let me boycott their class and build a company instead. After a few weeks, only one guy responded.</p>
+                    
+                    <p>But that's all we needed. I was in. After hours of exchanging stories and visions for entrepreneurship at Butler, I got him to sponsor it. We speedran a non-existent process that was allegedly supposed to take 8 weeks in 24 hours.</p>
+                    
+                    <p>This taught me one of my favorite life secrets: the "rules" aren't always real. Most people think the world is set in stone, but it's way more bendable than it looks if you just push :)</p>
+                    
+                    <p>Now that I had my credits secured, I needed to pick what to build...</p>
+                    
+                    <p>During my time at Boldvoice, one of my key projects was leveraging happy customers as advocates to drive growth more efficiently. Through this, I noticed a major shift in how people buy: traditional channels like paid ads, SEO, and cold outreach weren't as effective as they once were.</p>
+                    
+                    <p>Consumers no longer trust what companies say about themselves, especially with the constant bombardment of ads and spam. Instead, they trust people they know or real customers of the company.</p>
+                    
+                    <p>This insight became the foundation for my thesis: if you can properly motivate and organize your customers, they'll outperform your own team in sales, marketing &amp; product feedback.</p>
+                    
+                    <p>Yet, no one had built the infrastructure to make this happen at scale.</p>
+                    
+                    <p>I'd quickly connected &amp; met with Srikar Chava &amp; Brandon Jakobson who both shared a similar vision for a creator-led GTM. And Zealot was born.</p>
+                    
+                    <p>I remember one day I left class for 30 minutes to take a demo call with a brand called No Cow. All we had was a Figma prototype and at the end of the call they asked how much it was.</p>
+                    
+                    <p>We'd yet to come up with a price so I randomly charged a number I thought there'd be no chance in hell they would pay.</p>
+                    
+                    <p>"It'll be $500/mo"</p>
+                    
+                    <p>"Oh that's it, sweet! We were paying like $4k/mo for our current platform and Zealot is way way better so that's great--send over the link to pay."</p>
+                    
+                    <p>SHIT! But whatever, we had our first real paying customer.</p>
+                    
+                    <p>After graduating, I kept working on Zealot even during my real day job at JPMorgan. I often had to sneak down to the lower levels of the office building to take demo calls because I had no other time and wanted this to work.</p>
+                    
+                    <p>Initially, we were selling a Shopify app to consumer brands. It was going well, and we'd signed on pretty well-known brands like Jack Links, Victrola, Golden Hippo, No Cow, etc. but at the same time... we'd also begun using our own advocates as a B2B growth lever to sell to other consumer brands and it was working so well.</p>
+                    
+                    <p>And while it may seem obvious now, no one was really doing this yet in B2B... but our intuition kept pointing us to a world where we knew this infrastructure to activate advocates at scale has to exist.</p>
+                    
+                    <p>And the impact of one advocate could be even greater in B2B since it's not just a pair of jeans but often times several 6 or 7 figure purchases--so much more important to get peer validation.</p>
+                    
+                    <p>So overnight, we took the risk to pivot our entire business to B2B &amp; cut loose our existing customers.</p>
+                    
+                    <p>We knew we needed more money to begin putting together an eng team and GTM function so we began fundraising for a small round.</p>
+                    
+                    <p>And ended up closing our first round of funding which was led by Ripple Ventures in Spring 2024. They quickly doubled down again a few months later as we began to grow the B2B product offering.</p>
+                    
+                    <p>Not having much experience in the space, I think we ended up completing over 300+ customer chats to learn more about what they were all trying to get done.</p>
+                    
+                    <p>Eventually, we ended up signing our first REAL enterprise customer who was ClickUp, for $30k/yr. That was cool because our highest contract before was only $3k/yr--a 10x jump. Even funnier looking back now, only about 1.5 years later, as we signed our first million-dollar deal with a Fortune 50 and count customers like Cisco, Rippling, Microsoft, Salesforce, Airtable, Dassault Systems, Carta, &amp; more today.</p>
+                    
+                    <p>As we kept growing, we knew we now needed even more capital to hire a team and build a proper enterprise GTM motion. Because we were still young 20 year olds selling to massive enterprises who almost never took us seriously.</p>
+                    
+                    <p>Everything changed when we were approached about a potential M&amp;A process with a few inbound buyers in our space. We explored these options and realized we could shortcut building a mature enterprise B2B engine by joining forces, and so we did. We took Zealot from a $45 83(b) election investment to each of us becoming millionaires in our early 20s, which still feels crazy to say.</p>
+                    
+                    <p>As CEO, I wore every hat--design, PM, outbound, AE, CS, product marketing. Even though I still don't really know how to do any of those jobs the right way. I like to joke that I'm T-shaped till the day I die.</p>
+                    
+                    <p>And the aftermath of the Butler story is also cool because now there's a legit entrepreneurship program at Butler with 100+ businesses started as a result. Pretty cool!</p>
+                    
+                    <div class="image-gallery">
+                        <img src="https://i.imgur.com/uWTZMsH.jpg" alt="Zealot moment 1">
+                        <img src="https://i.imgur.com/tEoCCsX.jpg" alt="Zealot moment 2">
+                        <img src="https://i.imgur.com/YKcbDyz.jpg" alt="Zealot moment 3">
+                        <img src="https://media.licdn.com/dms/image/v2/D5622AQFw4hQXsUWX-w/feedshare-shrink_2048_1536/B56Zjpk3HSHIA0-/0/1756265425710?e=1770854400&v=beta&t=YdcffpizJi0s9QNXREgGtC9lszP1zTxdvittFu8gh80" alt="Zealot founding story">
+                        <img src="https://media.licdn.com/dms/image/v2/D5622AQE5aBgP2pPRXA/feedshare-shrink_2048_1536/B56Zjpk3F3G0A0-/0/1756265419954?e=1770854400&v=beta&t=PqtGgUVg55w9t0DX3haPMbWIC4INCXy-Jjbqb_OO_Bk" alt="Zealot journey">
+                        <img src="https://media.licdn.com/dms/image/v2/D5622AQEBA5utrhXR9w/feedshare-shrink_2048_1536/B56Zjpk3HSH8BA-/0/1756265427687?e=1770854400&v=beta&t=C8IiJApM8K8cgqshYzinPUwQbIjMYkkE549Z_IqrdH0" alt="Zealot acquisition">
+                        <img src="https://gcdnb.pbrd.co/images/3a1NHMsF2EAO.png?o=1" alt="Signing the LOI to get acquired">
+                    </div>
+                    <p style="font-size: 0.9em; opacity: 0.7; margin-top: -10px;">Signing the LOI to get acquired (last image)</p>
+                    
+                    <p>Fun stories from building this: <a href="https://www.linkedin.com/posts/samuel-farber_tbh-didnt-think-id-ever-share-this-publicly-activity-7366513656265654276-iBX1" target="_blank">the real story</a>, <a href="https://www.linkedin.com/feed/update/urn:li:activity:7278789454138355715/" target="_blank">early days</a>, <a href="https://www.linkedin.com/posts/samuel-farber_we-were-24-hours-away-from-our-first-ever-activity-7416861893908373504-VqqS" target="_blank">almost died</a></p>
+                </div>
+                <div class="item">
+                    <h3>2024: Chief of Staff, Inevitable Outcomes</h3>
+                    <p>I was Shaan Puri's Chief of Staff, left to go full-time on Zealot.</p>
+                    <p>Got the job after sending Shaan 50+ emails with ideas & helped with projects like launching Workstreet, 5 Tweet Tuesday, somewhere.com & My First Million.</p>
+                    <div class="image-gallery">
+                        <img src="https://media.licdn.com/dms/image/v2/D5622AQEn3g5XW21VCw/feedshare-shrink_1280/feedshare-shrink_1280/0/1721576656864?e=1770854400&v=beta&t=uiSym0ReZl_6ZseG8-L-tHYQc9HK98P9764Tc3h5A3U" alt="Chief of Staff with Shaan Puri">
+                        <img src="https://gcdnb.pbrd.co/images/G2pTwIxBRcQ4.png?o=1" alt="With Shaan Puri">
+                        <img src="https://gcdnb.pbrd.co/images/Y8VYmJiqz77O.jpg?o=1" alt="Pregame to MFM recording">
+                    </div>
+                    <p style="font-size: 0.9em; opacity: 0.7; margin-top: -10px;">Pregame to MFM recording (last image)</p>
+                </div>
+                <div class="item">
+                    <h3>2023-2024: Technology & Disruptive Commerce Analyst, J.P. Morgan</h3>
+                    <p>Worked in even more spreadsheets.</p>
+                </div>
+                <div class="item">
+                    <h3>2023: Generalist Intern, Gateway X</h3>
+                    <p>Helped launch Bootstrapped Giants, a fast-growing media company for founders. My job was to help start & scale multi-million dollar businesses. I wrote viral posts that reached millions and created Jesse Pujji's main headline: building a $1 billion venture studio. Check out the posts: <a href="https://x.com/jspujji/status/1732025605875441773" target="_blank">here</a> and <a href="https://x.com/jspujji/status/1734202008352022923" target="_blank">here</a></p>
+                </div>
+                <div class="item">
+                    <h3>2022-2023: Growth & Product, BoldVoice</h3>
+                    <p>Helped grow BoldVoice through ambassadors and customer advocacy, which was voted one of the best apps in the world by Google in 2021.</p>
+                </div>
+                <div class="item">
+                    <h3>2022: Summer Analyst, J.P. Morgan</h3>
+                    <p>I cold emailed my way into a banking internship at J.P. Morgan, which has a 0.6%-0.7% acceptance rate.</p>
+                </div>
+                <div class="item">
+                    <h3>2021-2022: Growth & Product, Kunduz</h3>
+                    <p>One of inc.com's 50 World-changing startups.</p>
+                </div>
+                <div class="item">
+                    <h3>2021: Summer Intern, Gallagher</h3>
+                    <p>Got coffee & bagels for people.</p>
+                </div>
+                <div class="item">
+                    <h3>2020-2021: Co-Founder, Postgame</h3>
+                    <p>First tech startup where I tried to build the LinkedIn for sports professionals with an ex-NFL player.</p>
+                </div>
+                <div class="item">
+                    <h3>2020: Went viral on TikTok</h3>
+                    <p>Got curious about how to go viral on TikTok when it was just coming out and grew the account to 5M views & 10K+ followers in a year-ish. <a href="https://www.tiktok.com/@samuel.farber" target="_blank">@samuel.farber</a></p>
+                    <img src="https://gcdnb.pbrd.co/images/3Bxytggh195Y.png?o=1" alt="TikTok viral content" style="width: 100%; max-width: 400px; border-radius: 8px; margin-top: 15px; display: block;">
+                </div>
+                <div class="item">
+                    <h3>2020-Present: Started the #1 Ranked Tweet Tapestry Store in the world</h3>
+                    <p>I wanted to learn how to do marketing for DTC products and Etsy seemed easier since buyers were already there vs Shopify. Figured out how to use Etsy SEO to get to top search results by leveraging a different name, using a tagging hack I found, etc. to become the #1 seller of stuff with tweets on them.</p>
+                    <p><a href="https://www.etsy.com/shop/TweetsOnThings?ref=shop_sugg_market" target="_blank">My Etsy store (TweetsOnThings)</a> - still running!</p>
+                    <div class="image-row">
+                        <img src="https://i.imgur.com/IP0Jd8r.jpg" alt="Tweet tapestry store listing">
+                        <img src="https://i.imgur.com/yaXRHeN.jpg" alt="Tweet tapestry store page">
+                    </div>
+                </div>
+                <div class="item">
+                    <h3>2019-2022: Ex-D1 Athlete, Butler Football</h3>
+                    <p>No, this isn't an error. Never stepped on the field lol. Amidst a labrum injury and also not being good enough I guess.</p>
+                    <p><a href="https://www.espn.com/college-football/player/_/id/4573920/sam-farber" target="_blank">My ESPN profile (complete with no stats)</a></p>
+                    <img src="https://gcdnb.pbrd.co/images/cKvnpnpRotP8.png?o=1" alt="Butler Football" style="width: 100%; max-width: 400px; border-radius: 8px; margin-top: 15px; display: block;">
+                </div>
+                <div class="item">
+                    <h3>2019-2020: Ran the #1 underground Madden gambling ring in the world</h3>
+                    <p>Connected the best Madden players in the world and took a hefty 50% cut on every game.</p>
+                    <img src="https://i.imgur.com/QoulQZC.jpg" alt="Underground Madden gambling ring" style="width: 100%; max-width: 400px; border-radius: 8px; margin-top: 15px; display: block;">
+                </div>
+                <div class="item">
+                    <h3>2018-2020: Delivery Driver, Domino's</h3>
+                    <p>Every Monday night I got to deliver 50 pizzas to a local high school. I got a $50 tip every time. It was awesome.</p>
+                </div>
+                <div class="item">
+                    <h3>2016: Private Swim Lessons for Kids</h3>
+                    <p>Private swimming instructor. Helped teach kids how to swim. It also gave me one of my best "off-balance-sheet" wins: my high school only let seniors park, and you had to pay. Unless you were staff. So without asking, I just started parking in the staff lot - the best spot in a school with 5,000+ kids. I parked there for free until senior year, when a system update flagged me and I got reported to the dean.</p>
+                </div>
+                <div class="item">
+                    <h3>2014: Tried to file a world record for the smallest pencil LOL</h3>
+                    <img src="https://i.imgur.com/6AGcmO0.jpg" alt="World record pencil attempt" style="width: 100%; max-width: 400px; border-radius: 8px; margin-top: 15px; display: block;">
+                </div>
+                <div class="item">
+                    <h3>2013: Jailbreaking iPods for friends, flipping lifesavers for "pack paws" in middle school</h3>
+                </div>
+                <div class="item">
+                    <h3>2012: Washing dishes at my dad's restaurant</h3>
+                    <p>Learned I never wanted to trade time for money.</p>
+                </div>
+                <div class="item">
+                    <h3>2007: Unlimited money glitch</h3>
+                    <p>Didn't have enough money to buy the new DS, and my parents said, "You have to find a way to make money." So, like any kid would, I started feeding dollar bills into our printer while they were at work, not realizing it used literal printer paper. Mom was not happy when she saw.</p>
+                    <img src="https://i.imgur.com/PmaH6Ew.jpg" alt="Unlimited money glitch" style="width: 100%; max-width: 400px; border-radius: 8px; margin-top: 15px; display: block;">
+                </div>
+            </div>
         </div>
-        <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:32px;color:var(--red);flex-shrink:0">C−</div>
-      </div>
 
-      <!-- Diana -->
-      <div style="padding:14px 24px;display:flex;align-items:center;justify-content:space-between">
-        <div style="display:flex;align-items:center;gap:12px">
-          <div style="width:32px;height:32px;flex-shrink:0;background:var(--surface);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone)">D.M.</div>
-          <div>
-            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--paper)">diana.m <span style="color:var(--bone);font-size:10px">· product_designer</span></div>
-            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);margin-top:3px">↑ rising · promo candidate</div>
-          </div>
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">Mini Adventures</div>
+            <div class="section-content">
+                <div class="item">
+                    <p>A year-by-year list of some things I've crossed off my f*ck it list</p>
+                </div>
+                <div class="item">
+                    <h3>2026</h3>
+                    <div class="carousel">
+                        <figure class="carousel-item">
+                            <img src="https://gcdnb.pbrd.co/images/zqUkkVTgAsBl.jpg?o=1" alt="First bass caught while ice fishing">
+                            <figcaption class="carousel-caption">First bass caught while ice fishing.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3>2025</h3>
+                    <div class="carousel">
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/KE3mTMA.jpeg" alt="Skiing in Vail">
+                            <figcaption class="carousel-caption">Skiing in Vail.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/qDEAVXT.png" alt="Getting ready to pitch 10 VCs in one day in NYC">
+                            <figcaption class="carousel-caption">Getting ready to pitch 10 VCs in one day in NYC.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/MwrUcg5.png" alt="Me after getting zero yeses from VCs">
+                            <figcaption class="carousel-caption">Me after getting zero yeses from VCs.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/fst44J5.jpeg" alt="Skiing in Banff">
+                            <figcaption class="carousel-caption">Skiing in Banff.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/94uuft0.jpg" alt="Go Cubs">
+                            <figcaption class="carousel-caption">Go Cubs.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/fJkDjix.jpg" alt="Giving a speech at Butler to 300+ entrepreneurs and meeting Alex Palou">
+                            <figcaption class="carousel-caption">Giving a speech at Butler to 300+ entrepreneurs and meeting Alex Palou.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/oZltK7A.jpg" alt="Tea ceremony at Fairmont Suites in Banff">
+                            <figcaption class="carousel-caption">Tea ceremony at Fairmont Suites in Banff.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/Q7xJNnu.jpg" alt="Highline 2025, aka the coolest B2B conference ever">
+                            <figcaption class="carousel-caption">Highline 2025, aka the coolest B2B conference ever.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/ry3WJ0x.jpg" alt="Whitewater rafting at Highline 2025">
+                            <figcaption class="carousel-caption">Whitewater rafting at Highline 2025.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/sJH3Rxi.jpg" alt="Sarah and my engagement party at Zhivago">
+                            <figcaption class="carousel-caption">Sarah and my engagement party at Zhivago!</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/L428IK2.jpg" alt="Best takeoff gift ever from Sarah, ahead of the acquisition announcement">
+                            <figcaption class="carousel-caption">Best takeoff gift ever from Sarah, ahead of the acquisition announcement.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/OLba6Kj.jpg" alt="Hanging at Sharan's adult prom event in a random NYC warehouse">
+                            <figcaption class="carousel-caption">Hanging at Sharan's adult prom event in a random NYC warehouse.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/OfCi5BJ.jpg" alt="Island tour in Croatia for Sarah's birthday">
+                            <figcaption class="carousel-caption">Island tour in Croatia for Sarah's birthday.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/4ysJFMe.jpg" alt="Go Cubs">
+                            <figcaption class="carousel-caption">Go Cubs.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/CGMgkfg.jpg" alt="Fishing trip in NC">
+                            <figcaption class="carousel-caption">Fishing trip in NC.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/mKngwyF.jpg" alt="First time in Times Square">
+                            <figcaption class="carousel-caption">First time in Times Square.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/GJyV92t.jpg" alt="First Waymo ride in SF">
+                            <figcaption class="carousel-caption">First Waymo ride in SF.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/59kkPmw.jpg" alt="Hot air balloon festival in the Traverse City area">
+                            <figcaption class="carousel-caption">Hot air balloon festival in the Traverse City area.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/ktU5bfO.jpg" alt="Seeing Darryl from The Office at Comedy Cellar">
+                            <figcaption class="carousel-caption">Seeing Darryl from The Office at Comedy Cellar (no phones!).</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/24R9mlC.jpg" alt="One of the coolest dinners ever at Abra Ovata in Athens">
+                            <figcaption class="carousel-caption">One of the coolest dinners ever at Abra Ovata in Athens.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/l8lVeX8.jpg" alt="Skybar lounge in Mykonos">
+                            <figcaption class="carousel-caption">Skybar lounge in Mykonos.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/BmKEh3v.jpg" alt="Birthday bowling in Croatia">
+                            <figcaption class="carousel-caption">Birthday bowling in Croatia.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/jId7qsw.jpg" alt="Boat day in Traverse City">
+                            <figcaption class="carousel-caption">Boat day in Traverse City.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3>2024</h3>
+                    <div class="carousel">
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/KpWCqzR.jpg" alt="Proposing to my life partner">
+                            <figcaption class="carousel-caption">Proposing to my life partner.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/tLwnT3o.jpg" alt="Clubbing in Spain after we got engaged">
+                            <figcaption class="carousel-caption">Clubbing in Spain after we got engaged.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/OVC1uCY.jpg" alt="Kayaking in Spain">
+                            <figcaption class="carousel-caption">Kayaking in Spain.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/idaDkpA.jpg" alt="Monastery hike at Montserrat">
+                            <figcaption class="carousel-caption">Monastery hike at Montserrat.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/Erzd1KL.jpg" alt="Chilling in front of the Eiffel Tower">
+                            <figcaption class="carousel-caption">Chilling in front of the Eiffel Tower.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/Qoa6B3f.jpg" alt="Skydiving in Switzerland">
+                            <figcaption class="carousel-caption">Skydiving in Switzerland.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/0rDs7lP.jpg" alt="Hot-tubbing in Iceland">
+                            <figcaption class="carousel-caption">Hot-tubbing in Iceland.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/BilusmU.jpg" alt="Bubbles in Iceland">
+                            <figcaption class="carousel-caption">Bubbles in Iceland.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/QIbbn30.jpg" alt="Puzzles and wine in Iceland">
+                            <figcaption class="carousel-caption">Puzzles and wine in Iceland.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/bXQTQKc.png" alt="Jumping into the Arctic harbor in Tromso at 4 degrees C">
+                            <figcaption class="carousel-caption">Jumping into the Arctic harbor in Tromso at 4 degrees C. It was cold.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/QKWSrDF.jpeg" alt="Seeing the northern lights in Tromso">
+                            <figcaption class="carousel-caption">Seeing the northern lights in Tromso.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/dcpNbto.jpeg" alt="Feeding reindeer in the wild">
+                            <figcaption class="carousel-caption">Feeding reindeer in the wild.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/IM5kkvp.jpg" alt="Gainsight Conference in Amsterdam">
+                            <figcaption class="carousel-caption">Gainsight Conference in Amsterdam.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/bWbrS1k.jpg" alt="Ring Road in Iceland">
+                            <figcaption class="carousel-caption">Ring Road in Iceland.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3>2023</h3>
+                    <div class="carousel">
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/pGneGKO.jpg" alt="Brother and sister-in-law getting married">
+                            <figcaption class="carousel-caption">Brother and sister-in-law getting married!</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/mGyb9PB.jpg" alt="Monkey hike in Thailand">
+                            <figcaption class="carousel-caption">Monkey hike in Thailand.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/itahIt4.jpg" alt="Lantern festival in Chiang Mai">
+                            <figcaption class="carousel-caption">Lantern festival in Chiang Mai.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/uDktqG7.jpg" alt="Rainbow hike">
+                            <figcaption class="carousel-caption">Rainbow hike.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/4fiNUNd.jpg" alt="Floating market in Thailand">
+                            <figcaption class="carousel-caption">Floating market in Thailand.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/HXBnV0s.png" alt="The Devil's Wheel at Oktoberfest">
+                            <figcaption class="carousel-caption">The Devil's Wheel at Oktoberfest.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3>2022</h3>
+                    <div class="carousel">
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/9xEvWAU.jpg" alt="Skiing in Cortina d'Ampezzo">
+                            <figcaption class="carousel-caption">Skiing in Cortina d'Ampezzo (where the 2026 Winter Olympics are taking place).</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/zobgNu9.jpg" alt="Surfing in Portugal">
+                            <figcaption class="carousel-caption">Surfing in Portugal.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/A2gq4z2.jpg" alt="Bioluminescent plankton swim at night in Krabi">
+                            <figcaption class="carousel-caption">Bioluminescent plankton swim at night in Krabi.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/swyN3Ws.jpg" alt="Trevi Fountain in the middle of the night">
+                            <figcaption class="carousel-caption">Trevi Fountain in the middle of the night.</figcaption>
+                        </figure>
+                        <figure class="carousel-item">
+                            <img src="https://i.imgur.com/eikSHiK.jpg" alt="Paella class in Barcelona">
+                            <figcaption class="carousel-caption">Paella class in Barcelona.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:32px;color:var(--paper);flex-shrink:0">B+</div>
-      </div>
 
-      <!-- Footer note -->
-      <div style="padding:10px 20px;border-top:1px solid var(--rule);background:var(--surface)">
-        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone);letter-spacing:0.06em">// from slack · github · jira · figma · no manager input · no surveys</p>
-      </div>
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">Yearly Misogis</div>
+            <div class="section-content">
+                <div class="item">
+                    <h3>2026: Complete a sprint triathlon in 1 hour & 30 minutes (Pending)</h3>
+                    <p>750m swim, 20km bike ride, and 5km run. August 25.</p>
+                    <p>Goal: 90 mins total</p>
+                    <p>15min swim (2:00/100m pace) → 3min transition → 40min bike (30km/h ride) → 2min transition → 30min run (6min/km)</p>
+                </div>
+                <div class="item">
+                    <h3>2025: Run a marathon (failed)</h3>
+                    <p>Mile 22 out of 26. I passed out.</p>
+                    <p>Next thing I knew I was waking up to the medics restarting my heart on the way to the ER. Out of the corner of my eye I saw my fiancé trying to get in, but they wouldn't let her. Later found out she rode up front.</p>
+                    <p>All I remember in that ambulance was asking the medics if I was going to die. They just wouldn't answer me. So I kept getting more and more scared.</p>
+                    <p>I kept thinking this was it. My life was over. I thought about all the things I still wanted to do.</p>
+                    <p>Then I got to the hospital and don't remember anything else.</p>
+                    <p>Later found out I got a rare disease called rhabdomyolysis. They took my CK levels in the ER. Normal level is like 500... mine was 50K+. I was in the hospital for almost a week on IV flush. (Hospital food is surprisingly good haha)</p>
+                    <p>The doctor said I was lucky I came in and got found so fast or I would have been dead. Apparently happens in 1 out of 10 cases. It hits and gets serious FAST!</p>
+                    <p>But yeah honestly kind of learned from this that you never know what will happen when you stare death in the eyes.</p>
+                    <img src="https://gcdnb.pbrd.co/images/iwItbdFZLzI6.jpg?o=1" alt="In the hospital after the marathon" style="width: 100%; max-width: 400px; border-radius: 8px; margin-top: 15px; display: block;">
+                    <p style="font-size: 0.9em; opacity: 0.7; margin-top: 8px;">I was on so many drugs in this</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" style="display: none;">
+            <div class="section-header" onclick="toggleSection(this)">Thoughts</div>
+            <div class="section-content">
+                <div class="item">
+                    <h3>Longer Ones</h3>
+                </div>
+                <div class="item">
+                    <h3><a href="javascript:void(0);" onclick="showWriteup('mom-test')">What "The Mom" Test Got Wrong</a></h3>
+                    <div class="meta">January 2026</div>
+                    <p>Stop asking for problems. Ask what they're trying to get done.</p>
+                </div>
+                <div class="item">
+                    <h3><a href="javascript:void(0);" onclick="showWriteup('onion')">Entrepreneurship is like an onion</a></h3>
+                    <div class="meta">January 2026</div>
+                    <p>Most people stay on the outside. The real problems are at the core.</p>
+                </div>
+                <div class="item">
+                    <h3><a href="javascript:void(0);" onclick="showWriteup('amsterdam')">How I closed a million-dollar deal with a stranger's charger</a></h3>
+                    <div class="meta">October 2025</div>
+                    <p>Three minutes left. No charger. Started running.</p>
+                </div>
+                <div class="item">
+                    <h3><a href="javascript:void(0);" onclick="showWriteup('gamification')">Why gamification fails (and how to fix it)</a></h3>
+                    <div class="meta">March 2025</div>
+                    <p>Points and badges don't work. Here's what does.</p>
+                </div>
+                <div style="border-top: 1px solid #000; margin: 20px 0;"></div>
+                <div class="item">
+                    <h3>Strong Beliefs, Loosely Held :)</h3>
+                    <p>• Success is being excited to go to work and being excited to come home.</p>
+                    <p>• What product has a better moat than the QWERTY keyboard...</p>
+                    <p>• Every action humans take can be traced back to an incentive.</p>
+                    <p>• Figure out how to turn yourself into an API, where you give others something and they give you things in return.</p>
+                    <p>• People take 1k steps per day, doom-scroll, eat like shit, and then complain about being sad or feeling shitty.</p>
+                    <p>• Asking good questions is way more important than having the right answer.</p>
+                    <p>• Most people just want to seem cool and unique to others. What can help them with that?</p>
+                    <p>• Once you understand the incentives behind mainstream media, it becomes truly unwatchable.</p>
+                    <p>• 4,000 Weeks is by far the most insane framing for how short life is.</p>
+                    <p>• Your brain will find a problem to focus on. Choose your problems wisely.</p>
+                    <p>• Great founders have the shortest memory and are ignorant about the past.</p>
+                    <p>• Everything is negotiable besides death and taxes.</p>
+                    <p>• Toilets are made wrong.</p>
+                    <p>• Great performance in school is not correlated to success.</p>
+                    <p>• How fun are inside jokes? Like, so funny.</p>
+                    <p>• Industry lingo or buzzwords are a moat in itself, making it harder to break in or understand what's going on, which makes those ppl more valuable, especially in fucking finance. I never knew what they were saying & I doubt they did either.</p>
+                    <p>• Most of the entrepreneurial or business advice you hear / read on social media is the leftovers. The good ideas & true alpha aren't getting blasted online unfortunately.</p>
+                    <p>• Web3 was/is just being able to invest in private companies w/ less friction.</p>
+                    <p>• Most people aren't ok with not having an answer key or external validation on what they're doing, which is why 9-5 is so popular - it's easy to measure yourself & have your life pre-decided for you.</p>
+                    <p>• Wearing the same clothes every day isn't that big of a deal.</p>
+                    <p>• Ppl will believe anything they see.</p>
+                    <p>• Very few ppl have the power to decide what ppl see.</p>
+                    <p>• Burnout is fake - it just means they want to quit or they don't like what they're doing.</p>
+                    <p>• The constant stream of others' successes ("look at my life, look where I am") makes younger people feel worse by comparison & is likely one of the causes of rising anxiety / depression rates in Gen Z.</p>
+                    <p>• Gen Z has a recall problem.</p>
+                    <p>• Most times in life, the real strategy is simply: we're gonna figure it out. But most people judge this as a moment in time or think the decision is final.</p>
+                    <p>• Most people borrow their desires from others.</p>
+                    <p>• News, sports, media are mostly about mining your attention for ad revenue, and they're very good at it. Don't get too trapped in this or else you'll become the product :0</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="writeup-page" style="display: none;">
+            <div style="max-width: 700px; margin: 0 auto; padding: 60px 20px;">
+                <div style="margin-bottom: 30px;">
+                    <a href="javascript:void(0);" onclick="closeWriteup()" style="color: #0000EE; text-decoration: underline;">← Back</a>
+                </div>
+                <div id="writeup-content"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">Health</div>
+            <div class="section-content">
+                <div class="item">
+                    <p>I'm currently around 170 lbs at 5'11 and have a biological age of around 16-19 years old (by Function Health).</p>
+                    <img src="https://i.imgur.com/T9UiUwI.jpg" alt="Function Health biological age" style="width: 100%; max-width: 320px; border-radius: 8px; margin: 15px 0 20px 0; display: block;">
+                    <p>Right now, I'm working hard to simplify my health/fitness routine down to 2 things. If I do these two things most of the time, I'm typically feeling pretty good mentally & physically:</p>
+                    <p>1. <strong>Morning workout</strong> - Usually swimming around 1,000 yards or lifting.</p>
+                    <p>2. <strong>Eat foods from the perimeter of grocery stores</strong> - I love going out to dinner, but I try to eat real food most of the time.</p>
+                </div>
+                <div class="item">
+                    <h3>Other Things That Help</h3>
+                    <p>• Annual cancer screening from Ezra. I have some history, so I want to stay preventative.</p>
+                    <p>• Recently started monitoring my glucose with Lingo - we'll see what it says.</p>
+                    <p>• Annual blood panel from Function Health. I paste my results into Claude and ask what I'm deficient in, then buy supplements to fix them. Here's my current stack:</p>
+                    <p><strong>Morning (with breakfast):</strong></p>
+                    <p>• <a href="https://www.amazon.com/NOW-Foods-Trimethylglycine-1000-Veg-Capsules/dp/B0013OQGO6" target="_blank" rel="noopener noreferrer">NOW Foods TMG 1,000mg</a> - 2-3 caps (~$15/month)</p>
+                    <p>• <a href="https://www.amazon.com/Life-Extension-BioActive-Complete-B-Complex/dp/B01M0ELWTM" target="_blank" rel="noopener noreferrer">Life Extension BioActive Complete B-Complex</a> - 2 caps (~$15/month). Why: has 1,000mcg methylB12 + 680mcg methylfolate + higher B6 - everything you need in one product.</p>
+                    <p>• <a href="https://www.amazon.com/Nordic-Naturals-Ultimate-Omega-Softgels/dp/B001LF39RY" target="_blank" rel="noopener noreferrer">Nordic Naturals Ultimate Omega</a> - 4 softgels (~$40/month)</p>
+                    <p>• <a href="https://www.amazon.com/Thorne-Research-Vitamin-1000-Capsules/dp/B0797H21CZ" target="_blank" rel="noopener noreferrer">Thorne Vitamin D3 5,000 IU</a> - 1 cap (~$12/month)</p>
+                    <p>• <a href="https://www.amazon.com/TRU-NIAGEN-Nicotinamide-Riboside-Supplement/dp/B01MSJGXWC" target="_blank" rel="noopener noreferrer">TRU NIAGEN (NR) 300mg</a> - 1 cap (~$40/month)</p>
+                    <p><strong>Evening (with dinner):</strong></p>
+                    <p>• <a href="https://www.amazon.com/NOW-Psyllium-Husk-500-Capsules/dp/B0013OQGO8" target="_blank" rel="noopener noreferrer">NOW Foods Psyllium Husk 500mg</a> - 3 caps (~$10/month)</p>
+                </div>
+                <div class="item">
+                    <h3>Daily Habits I Try to Hit</h3>
+                    <p>• Get sunlight right when I wake up</p>
+                    <p>• Green tea in the morning from <a href="https://www.japanteastudio108.com/" target="_blank">Japanese Tea Studio 108</a></p>
+                    <p>• Only eat fruit till lunch</p>
+                    <p>• Try to mostly eat within the Mediterranean diet</p>
+                    <p>• Night walks</p>
+                    <p>• Sauna before bed</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">Travel Itineraries</div>
+            <div class="section-content">
+                <div class="item">
+                    <h3>Itineraries I've Collected (not all mine)</h3>
+                    <p>• <a href="https://docs.google.com/document/d/1Z9MCTBITcrkYxA93fY-0gQOaGuNrELZeuk8m86bK1R4/edit?tab=t.0#heading=h.h90b8rz4d607" target="_blank">NYC</a></p>
+                    <p>• <a href="https://drive.google.com/file/d/1piwdQzawDbZCmxtgp_c_Ff9oanZ74zuI/view?usp=sharing" target="_blank">Jackson Hole</a></p>
+                    <p>• <a href="https://drive.google.com/file/d/1_JJF6GHRaq3kUfB_Q2F4kDNatWas4EUb/view?usp=sharing" target="_blank">Barcelona</a></p>
+                    <p>• <a href="https://docs.google.com/document/d/1B-iqtcwKd27izOgt-FvL00jcnZvkpgz8izyB5y_JraA/edit?tab=t.0" target="_blank">Lisbon</a></p>
+                    <p>• <a href="https://docs.google.com/document/d/1PrzFtwIcgJjwjS5tijw1d5vpxl4UFzUPvORTVCeBQRo/edit?tab=t.0" target="_blank">Hong Kong</a></p>
+                    <p>• <a href="https://docs.google.com/spreadsheets/d/1rmn6IudGecEu5xBSrvw51ewBQuDw6Yj3s43iPhM4yFQ/edit?usp=sharing" target="_blank">Greece/Croatia</a></p>
+                    <p>• <a href="https://docs.google.com/spreadsheets/d/1FuLAtibzbmx_QGCq76B_yue_ZZtoGjebDYbNp4s7RV8/edit?usp=sharing" target="_blank">Scandinavia (Tromso, Stockholm, Copenhagen)</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">Ideas You Should Steal</div>
+            <div class="section-content">
+                <div class="item">
+                    <h3>Some of my favorites</h3>
+                    <p>• Fix the seagrass issue in the ocean.</p>
+                    <p>• Automated robot window cleaning for skyscrapers.</p>
+                    <p>• Modern-day insurance company for Gen Z that's frictionless and super easy to use and understand.</p>
+                    <p>• AI that spots your worst employees by looking at all your data and predicting who is doing well and who isn't. Stop wasting money on employees who don't move the needle.</p>
+                    <p>• Gamified or custom captcha for your own users. Make them take a quiz or a survey to collect data or show them ads. It's an underutilized asset in captcha.</p>
+                    <p>• VAT refunds collection platform.</p>
+                    <p>• Productize this for CEOs.</p>
+                    <p>• AI tennis courts to auto keep score, say if ball is in/out, etc.</p>
+                    <p>• Build a production company that focuses on Hollywood-level product launch videos for enterprise companies only, starting at $100k... kind of like Creator Camp.</p>
+                    <p>• Have AI spy on your competitors 24/7.</p>
+                    <p>• Sweetgreen for school lunch programs / K-12. Still serving frozen pizza and mystery meat trays. Kids are developing bodies that need good fuel. Healthy, local, subsidized, beautiful food for schools.</p>
+                    <p>• New ATC software.</p>
+                    <p>• Grammarly for your CMDB.</p>
+                    <p>• The pillow that never loses its cool. You spend 1/3 of your life on your face. Why is your pillow $20?</p>
+                    <p>• New Jackbox.tv, make ppl look good to others, no download or switch required.</p>
+                    <p>• Portable karaoke machine.</p>
+                    <p>• NEW BATTERIES: a new way to store energy is necessary for every single other technological advance we still have to achieve. We need more storage with lighter weight and non-scarce resources (EVs, solar, fuel replacement, etc.). A new battery/power storage tech with power density of gasoline or more would be cheaper, more environmentally friendly, zero toxicity, and long life.</p>
+                    <p>• Wine industry robots to pick grapes with AI.</p>
+                    <p>• The worst challenge we will face is central sewer and water pipes in all cities built around 1900 cracking so badly after 150 years that we need to dig up all streets in all major cities and replace them. Gonna cost insane amounts of money. Solve that and save the world!</p>
+                    <p>• Make airline Wi-Fi not suck.</p>
+                    <p>• Stop managing your board. AI that keeps your board updated automatically.</p>
+                    <p>• Ad marketplace for planes: customize it to specific people depending on who they are and you can have it show any ad. It's great because they're there for hours and you have their attention.</p>
+                    <p>• Ad marketplace to rent any ad space like billboards across the world.</p>
+                    <p>• Tax alpha as a service, for loopholes.</p>
+                    <p>• Content lenses DTC company.</p>
+                    <p>• Veneer industry product.</p>
+                    <p>• Healthier food for flights company: make and deliver the food served on planes or the distributors for stuff that goes on plane.</p>
+                    <p>• What if you didn't need to "chat with support" but by watching your screen it proactively helped out in real-time.</p>
+                    <p>• Fixing "dirty data" in Salesforce. A big issue is that most Salesforce fields have multiple tags for the same thing or product. What if there was a way to easily look through the SF data and use AI to categorize the fields into one?</p>
+                    <p>• Flavored ice snack, organic and no calories DTC brand (0 cals).</p>
+                    <p>• Biotech body simulator for testing drugs faster for FDA approval.</p>
+                    <p>• Lovable for humans.</p>
+                    <p>• There needs to be an alternative to crowded bars and expensive drinks for Gen Z. Maybe it's a hold co for never being lonely.</p>
+                    <p>• Ginger shot gummies.</p>
+                    <p>• Contacts that record you, allow you to rewatch your memories, payments, etc.</p>
+                </div>
+                <div class="item">
+                    <h3>Personal Care & Health</h3>
+                    <p>• Never shave again - lotion/cream that removes hair in bulk, no more cutting yourself</p>
+                    <p>• Water activated makeup wipe removers - no more micellar water or bad makeup wipes</p>
+                    <p>• Never have bad breath again - competitor to gum (lasts 10 mins) and Listerine (chemicals and gross) that you pop in after dinner</p>
+                    <p>• Some kind of mouth wash that makes brushing teeth totally unnecessary. Can't believe we're still using hundred-year old technology to manually scrub our teeth</p>
+                    <p>• A true solution to combat baldness</p>
+                    <p>• Natural hair removal products - some type of natural cream that removes all hair (better for you than nair)</p>
+                    <p>• Low testosterone drink for men with low T</p>
+                    <p>• Sleep rituals - small nightly kit and routine that reliably flips your body into sleep mode</p>
+                    <p>• Flip pillow - stays cool and keeps your neck aligned</p>
+                    <p>• Personalized "magic pills" - I have to take 10 different pills daily. What if there was just one magic pill based on tests you take</p>
+                    <p>• Ginger gummies - ginger shots burn and are messy, gummies deliver benefits in portable form</p>
+                </div>
+                <div class="item">
+                    <h3>Home & Living</h3>
+                    <p>• Modern bathroom redesign - toilet is too high (bodies designed to squat), sink too low, shower is a deathtrap. We fill this room with toxic chemicals. We can't afford to do it this way</p>
+                    <p>• Home water quality is getting worse, fix it!</p>
+                    <p>• Opposite of a microwave - cool/freeze things in seconds</p>
+                    <p>• Never use another garbage can again - trash cans that disintegrate your trash in seconds</p>
+                    <p>• Sustainable glass containers - storing food in micro-plastic containers is so bad</p>
+                    <p>• The only luxury furniture brand that never comes with screws... pieces that click into place!</p>
+                    <p>• A button on your TV that makes your remote control sound an alarm so you can find it</p>
+                    <p>• RESET - whole home refresh that cleans air, textiles, and clutter so space feels new again</p>
+                    <p>• Glass keepers - durable glass that actually nests well for leftovers</p>
+                    <p>• Alarm clocks - stop waking up to stress. We've used loud noises for 100 years to start our day with cortisol</p>
+                </div>
+                <div class="item">
+                    <h3>Food & Beverage</h3>
+                    <p>• Remake the ranch close label for their bottle</p>
+                    <p>• DTC mayonnaise brand - high-quality modern mayo delivered to your doorstep</p>
+                    <p>• Modern car air fresheners DTC brand - fuck those small green trees</p>
+                    <p>• Fast health food - fast food is quick but unhealthy. Personalize bowls to your goals without slowing service</p>
+                    <p>• Food as software - planning what to eat wastes time and money. Service that plans and delivers daily meals tuned to your schedule</p>
+                    <p>• Taste test co. - spices feel the same. A seasoning brand built around 'can you taste the difference' challenge</p>
+                    <p>• Zero cal ice - cold, flavorful snack without calories. Organic flavored ice with great texture</p>
+                    <p>• Wine club OS - modern CRM, shipping, and compliance for winery memberships</p>
+                    <p>• Wine robots - pick, sort, and move grapes and bottles without damage</p>
+                </div>
+                <div class="item">
+                    <h3>Finance & Money</h3>
+                    <p>• Disrupt Experian, TransUnion, and credit bureaus</p>
+                    <p>• Stake your money like overlord.app but over iMessage. If you do the task, you get it back. Holds you accountable with money</p>
+                    <p>• Found money - states hold billions in unclaimed funds people never check. Background watcher alerts you when money is found</p>
+                    <p>• Seized assets marketplace - government auctions undersell because sites are clunky</p>
+                    <p>• Modern lottery - paper tickets and murky odds turn off modern players. Mobile tickets, clear odds, instant payouts</p>
+                    <p>• Points scout - points and miles feel like a puzzle. Search in plain language and auto-convert to book best option</p>
+                    <p>• One smart card - one card routes spend to best rewards program behind the scenes</p>
+                    <p>• People markets - people need flexible financing tied to future earnings</p>
+                    <p>• Derivatives ledger - trillions in contracts sit in spreadsheets. Real ledger tracks positions with audit</p>
+                </div>
+                <div class="item">
+                    <h3>Travel & Transportation</h3>
+                    <p>• Never get denied for a Visa again - competitor to VFS global, AI powered</p>
+                    <p>• Visabot - find and book appointments, competitor to VFS global</p>
+                    <p>• Apple Pro real estate tours - why travel to different houses when you can see 10+ in VR</p>
+                    <p>• Marketplace for bucket list items - tell them what you want to do, easily book end to end</p>
+                    <p>• Travi - trip planning eats weekends. Planner learns your taste and returns bookable itineraries</p>
+                    <p>• Travel VAT wallet - travelers abandon refunds because forms are painful. Wallet captures receipts and sends refund automatically</p>
+                    <p>• Calm flights - turbulence feels scary. Offline guide for your exact route explains bumps</p>
+                    <p>• Smart brake lights - lights that brighten with pedal pressure give drivers behind more time</p>
+                </div>
+                <div class="item">
+                    <h3>Social & Entertainment</h3>
+                    <p>• AI powered social network - always on listening/watching through meta glasses. Uses AI to auto create social posts you approve</p>
+                    <p>• iMessage app - never have a dead group chat again. Sends random prompts for what you're up to</p>
+                    <p>• VC firm that only invests in movies</p>
+                    <p>• Family game night - browser games that make everyone look clever in minutes</p>
+                    <p>• SingAnywhere - portable mic and app turn any room into a singalong</p>
+                    <p>• Euchre deck - purpose-built deck for Euchre players</p>
+                    <p>• Open poker - open source poker platform with modern payments builds trust</p>
+                </div>
+                <div class="item">
+                    <h3>B2B Software & Services</h3>
+                    <p>• AI native IT solutions provider / MSP for Fortune 50 like SFDC, Microsoft, Oracle</p>
+                    <p>• "Virtual DPO/Security Officer as a Service" - fractional DPO service for startups. Handle questionnaires, DPAs, compliance</p>
+                    <p>• Agency to help companies build amazing help/support docs for customers</p>
+                    <p>• Software to help refactor legacy code</p>
+                    <p>• Never worry about bugging your Eng team to spin up a sandbox with good data. Easily create sandboxes with dummy data</p>
+                    <p>• Become MCP-Compliant without the headaches in seconds</p>
+                    <p>• Rebuild slack with Superhuman UI, Slack as infra so people don't lose access</p>
+                    <p>• Superhuman for apple notes</p>
+                    <p>• Teams to Slack connection for CS support - can't connect with customers who use teams in slack</p>
+                    <p>• Snoop - competitor research is manual. Daily Slack feed summarizes launches, pricing, hiring</p>
+                    <p>• See your stack - agentless discovery and live dependency map give one accurate source of truth</p>
+                    <p>• AutoContent hub - calls, docs, threads contain unused gold. Pipeline turns them into weekly posts, clips, blogs</p>
+                    <p>• Cookie jar - cookie banners are ugly and non-compliant. One-click setup for Framer sites</p>
+                    <p>• Glue - secrets leak through docs and chat. Simple vault with automatic redaction</p>
+                    <p>• Bank 270 - automation handles commercial banking onboarding, underwriting inside tools banks use</p>
+                    <p>• Board brief - board updates eat weekends. Living packet assembles metrics, risks, wins automatically</p>
+                    <p>• Slack back office - HR, payroll, compliance, purchasing run inside chat</p>
+                    <p>• Screen helper - on-screen helper recognizes patterns and offers fix before ticket is filed</p>
+                    <p>• Salesforce cleanup - cleaner fixes CRM records at scale and keeps them fresh</p>
+                    <p>• Bookie OS - software manages ledgers, risk, and payouts for independent bookies</p>
+                </div>
+                <div class="item">
+                    <h3>Healthcare & Medical</h3>
+                    <p>• Autism paid newsletter for parents with interviews, advice etc</p>
+                    <p>• Trial finder - clinical trials stall because recruiting takes months. Structured screening fills studies faster</p>
+                    <p>• Clarity - speech therapy is expensive. Bite-size sessions and game loops deliver progress at home</p>
+                    <p>• Organ forge - invest in growth and scaffolds that move organ replacement closer to reality</p>
+                    <p>• Body simulator - virtual models test drug compounds before human trials</p>
+                    <p>• ADHD neuro-feedback facility</p>
+                </div>
+                <div class="item">
+                    <h3>E-commerce & Retail</h3>
+                    <p>• Buy/roll up women's beauty centers</p>
+                    <p>• Buy the neighborhood tobacco and liquor centers</p>
+                    <p>• Buy all beer distributors in one area</p>
+                    <p>• Own the veneer market w/ influencers. Document all celebs in veneers, own the lab manufacturing them</p>
+                    <p>• Acid reflux brand</p>
+                    <p>• ADA compliance eCom app - ensure your online store meets ADA standards and doesn't get sued</p>
+                    <p>• Shuffle dust - bars want shuffleboard to feel perfect. Consistent powder delivered on subscription</p>
+                </div>
+                <div class="item">
+                    <h3>Education & Career</h3>
+                    <p>• Communication boot camp - body language, charisma, flirting, learn to tell stories, use voice like instrument</p>
+                    <p>• Duolingo for learning Excel - fun courses sold B2B to finance firms, schools</p>
+                    <p>• Study abroad management software - saw counselor using spreadsheets, looks painful</p>
+                    <p>• Career consulting for college students - resume, interview prep, networking (I actually started this and it worked)</p>
+                </div>
+                <div class="item">
+                    <h3>Media & Content</h3>
+                    <p>• PE fund for acquiring licensing rights to make AI version of celebrities so they don't have to fly to LA to shoot commercials</p>
+                    <p>• AI agency to help famous people sell their AI rights to companies for ads</p>
+                    <p>• Full-time content creator recruitment agency - find in-house content creators for businesses</p>
+                    <p>• Pitch a government & go make content for them on TikTok to increase GDP</p>
+                    <p>• Plane ads - in-cabin screens capture attention for hours. Marketplace sells space by route</p>
+                    <p>• Raised by Reddit - weekly email with one standout question and five useful answers</p>
+                </div>
+                <div class="item">
+                    <h3>Real Estate & Property</h3>
+                    <p>• Open bath houses in the US</p>
+                    <p>• Buy local dog day cares - business that will never go away</p>
+                    <p>• CRM for landlords - their workflows seem like a total mess</p>
+                    <p>• Window bots - skyscraper windows are risky to clean. Robots do it on schedule</p>
+                </div>
+                <div class="item">
+                    <h3>Family & Memory</h3>
+                    <p>• TimelessTales - preserves family stories before they fade. Interview family members, create book or movie. Charge rich people $50k</p>
+                    <p>• 8teen - text pics/videos to a number that stores memories of kids growing up. They get access when they're 18</p>
+                    <p>• Yearbook - parents have thousands of phone photos. Text them in and get auto-made yearbook of your child's life</p>
+                    <p>• Tape to cloud - family videos sit on degrading tapes. Mail a box, get private cloud library</p>
+                </div>
+                <div class="item">
+                    <h3>Consumer Tech & Apps</h3>
+                    <p>• Anti-spam call blocker - blocks annoying spam calls, only get important ones</p>
+                    <p>• Eye tracking technology for bars - Amazon Go store tech but for bars. Scan card when you walk in</p>
+                    <p>• Temp iPhone + Android phones for app testing - test apps on hundreds of devices without needing 100s of devices</p>
+                    <p>• Sarcasm font</p>
+                    <p>• Highlight to help - press one key anywhere to shorten, fix, or format selected text</p>
+                    <p>• Keyless you - drop-in biometric and device login makes sign-in instant</p>
+                    <p>• Universal receipts - one wallet stores proof of purchase for returns, warranties, loyalty</p>
+                </div>
+                <div class="item">
+                    <h3>Infrastructure & Big Bets</h3>
+                    <p>• Reinvent the aviation black box</p>
+                    <p>• Reinvent lint rollers to remove friction and not waste paper</p>
+                    <p>• Aviation software for registering parts with FAA</p>
+                    <p>• Ticket queue mgmt system for big events</p>
+                    <p>• New type of certification for future - AI audit certification or AI bias certification</p>
+                    <p>• Airfield robots - baggage handling is dangerous and slow. Robots load/unload to reduce injuries</p>
+                    <p>• Carwash link - standard lets self-driving car find, queue, and pay for wash on its own</p>
+                    <p>• ATC assist - decision support for air traffic controllers surfaces conflicts earlier</p>
+                    <p>• SkyFi - airline Wi-Fi rarely lets you work or stream. Smarter routing makes it feel normal</p>
+                    <p>• Airline catering 2.0 - local kitchens and smarter distribution improve plane food</p>
+                    <p>• City pipe fix - new materials and robotics replace old water/sewer pipes with less digging</p>
+                    <p>• Next batteries - safer, denser batteries change EVs, phones, home storage, grid</p>
+                    <p>• Port OS - digital bills, faster clearance, container tracking keep ships moving</p>
+                    <p>• Cold chain OS - sensors and live dashboards keep goods cold and predict demand to cut waste</p>
+                </div>
+                <div class="item">
+                    <h3>Compliance & Legal</h3>
+                    <p>• $500T lost everyday for scams. Always on system to monitor your life. We'll cover your scam cost if you ever get scammed</p>
+                    <p>• Annual bias check - independent yearly reviews produce simple scorecards companies can share</p>
+                    <p>• Friendly home security - clear pricing, strong privacy defaults, helpful app</p>
+                    <p>• VAT rails - small sellers struggle with VAT math across borders. One login calculates tax and files on time</p>
+                    <p>• Deal coach - flat-fee templates, redlines, scripts to win price and terms in hours</p>
+                    <p>• Startup counsel - founders hate surprise legal bills. Flat-fee packages with clear scope</p>
+                    <p>• Gov navigator - helper completes government filings with you and tracks deadlines</p>
+                    <p>• Fair prison connect - prison calls and commissary overcharge families. App with honest pricing</p>
+                    <p>• Bail tools - risk scoring, reminders, digital funds reduce cost and missed court appearances</p>
+                    <p>• Gen Z insurance - mobile-first policies with clear coverage and fast claims</p>
+                </div>
+                <div class="item">
+                    <h3>Marketplace & Discovery</h3>
+                    <p>• Global lost and found - one tag and shared database so airports, hotels, stadiums can return things</p>
+                    <p>• Boredom cinema - dark, silent rooms booked for 20-60 minutes deliver paid detox experience</p>
+                    <p>• Smart courts - sensors track tennis scores and usage, bookings free up instantly</p>
+                    <p>• Elder connect - one feed accepts texted photos, voice notes, check-ins, prints best into monthly books</p>
+                    <p>• Only the best - search results only from sources and people you choose</p>
+                    <p>• Captcha plus - site-specific puzzles double as tiny polls or sponsor questions</p>
+                    <p>• Fresh seats - shared seating materials absorb and neutralize smells</p>
+                </div>
+                <div class="item">
+                    <h3>Compliance & Regulatory Arbitrage</h3>
+                    <p>• POTS replacement for elevator & pool phones - buildings pay $150-$300/month for emergency landlines by law. Switch them to cellular gateway for $20/month, charge $80/month. Pure arbitrage.</p>
+                    <p>• DOT consortium for trucking drug testing - trucking companies legally required to join random testing pool. You're just the admin managing compliance, they pay or trucks get taken off road.</p>
+                    <p>• Backflow preventer compliance coordinator - cities mandate annual inspections for commercial buildings. You don't do the plumbing, just handle scheduling and paperwork. City does your sales by sending threatening letters.</p>
+                    <p>• Mock surveyor / accreditation consultant for nursing homes - they're terrified of surprise state inspections. Sell quarterly "audit prep" visits with checklists. You're selling peace of mind against being shut down.</p>
+                </div>
+            </div>
+        </div>
+            </main>
     </div>
-  </div>
-</section>
 
-
-<!-- HOW IT WORKS -->
-<section class="py-96 px-page border-t" style="background:var(--surface)">
-  <div class="container">
-    <div class="section-label">how_it_works</div>
-    <h2 style="font-size:clamp(28px,4vw,52px);margin-bottom:12px">how it <span style="color:var(--ember)">works.</span></h2>
-    <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);max-width:520px;line-height:1.7;margin-bottom:48px">You shouldn't find out your best employee was about to quit at their exit interview. Unmask tells you before that happens.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h3>connect()</h3>
-        <p>Connect the tools your company already uses — chat, email, meetings, project management, and more.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;align-items:center">
-
-          <!-- GitHub -->
-          <div style="display:flex;align-items:center;gap:7px;border:1px solid var(--rule);padding:5px 8px;background:var(--surface);white-space:nowrap">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--mid)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mid)">GitHub</span>
-          </div>
-
-          <!-- Slack -->
-          <div style="display:flex;align-items:center;gap:7px;border:1px solid var(--rule);padding:5px 8px;background:var(--surface);white-space:nowrap">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52z" fill="#E01E5A"/>
-              <path d="M6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z" fill="#E01E5A"/>
-              <path d="M8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834z" fill="#36C5F0"/>
-              <path d="M8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z" fill="#36C5F0"/>
-              <path d="M18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834z" fill="#2EB67D"/>
-              <path d="M17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312z" fill="#2EB67D"/>
-              <path d="M15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52z" fill="#ECB22E"/>
-              <path d="M15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" fill="#ECB22E"/>
-            </svg>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mid)">Slack</span>
-          </div>
-
-          <!-- Jira -->
-          <div style="display:flex;align-items:center;gap:7px;border:1px solid var(--rule);padding:5px 8px;background:var(--surface);white-space:nowrap">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M11.975 0L5.988 5.987 0 11.975l5.988 5.988L11.975 24l5.988-5.987-5.988-5.988 5.988-5.988L11.975 0z" fill="#2684FF"/>
-              <path d="M11.975 5.987L8.981 8.981l2.994 2.994 2.994-2.994-2.994-2.994zM11.975 18.013l-2.994-2.994 2.994-2.994 2.994 2.994-2.994 2.994z" fill="url(#jira-grad)"/>
-              <defs><linearGradient id="jira-grad" x1="11.975" y1="5.987" x2="11.975" y2="18.013" gradientUnits="userSpaceOnUse"><stop stop-color="#0052CC"/><stop offset="1" stop-color="#2684FF"/></linearGradient></defs>
-            </svg>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mid)">Jira</span>
-          </div>
-
-          <!-- Figma -->
-          <div style="display:flex;align-items:center;gap:7px;border:1px solid var(--rule);padding:5px 8px;background:var(--surface);white-space:nowrap">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M8 24c2.208 0 4-1.792 4-4v-4H8c-2.208 0-4 1.792-4 4s1.792 4 4 4z" fill="#0ACF83"/>
-              <path d="M4 12c0-2.208 1.792-4 4-4h4v8H8c-2.208 0-4-1.792-4-4z" fill="#A259FF"/>
-              <path d="M4 4c0-2.208 1.792-4 4-4h4v8H8C5.792 8 4 6.208 4 4z" fill="#F24E1E"/>
-              <path d="M12 0h4c2.208 0 4 1.792 4 4s-1.792 4-4 4h-4V0z" fill="#FF7262"/>
-              <path d="M20 12c0 2.208-1.792 4-4 4s-4-1.792-4-4 1.792-4 4-4 4 1.792 4 4z" fill="#1ABCFE"/>
-            </svg>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mid)">Figma</span>
-          </div>
-
-          <!-- Salesforce -->
-          <div style="display:flex;align-items:center;gap:7px;border:1px solid var(--rule);padding:5px 8px;background:var(--surface);white-space:nowrap">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#00A1E0"><path d="M10.003 3.003C11.14 1.12 13.22 0 15.5 0c3.084 0 5.668 2.07 6.344 4.914C23.05 5.504 24 6.87 24 8.457c0 2.29-1.856 4.146-4.146 4.146-.285 0-.563-.03-.834-.083-.67 1.527-2.2 2.583-3.98 2.583-.442 0-.87-.07-1.27-.2-.744 1.58-2.36 2.674-4.23 2.674-1.77 0-3.32-.963-4.1-2.38-.274.056-.555.085-.843.085C2.335 15.282 0 12.946 0 10.05c0-1.944 1.063-3.647 2.637-4.556-.11-.37-.17-.758-.17-1.16 0-2.27 1.84-4.11 4.11-4.11 1.36 0 2.566.662 3.326 1.68"/></svg>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mid)">Salesforce</span>
-          </div>
-
-        </div>
-      </div>
-      <div class="step" style="border-top:2px solid var(--ember)">
-        <div class="step-num" style="opacity:1">02</div>
-        <h3>scan()</h3>
-        <p>Instead of relying on gut feel or biased reviews, Unmask watches what people actually do every day and gives each person an honest grade.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h3>act()</h3>
-        <p>You find out who's about to quit, who deserves a raise, and who's been coasting — in time to actually do something about it.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MONEYBALL -->
-<section class="py-96 px-page border-t">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
-      <div>
-        <div class="section-label">the_insight</div>
-        <h2 style="font-size:clamp(28px,4vw,52px);margin-bottom:20px">what moneyball<br>did to baseball.<span style="color:var(--ember)"><br>we do it to your org.</span></h2>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);line-height:1.8;max-width:380px">Everyone chased sluggers — big names, big swings, obvious talent. Beane ignored all of that and asked one question: what actually wins games?</p>
-      </div>
-      <div style="background:var(--code);border:1px solid var(--rule);padding:36px">
-        <p style="font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--mid);line-height:1.8;margin-bottom:20px">Most companies hire and promote the same way — whoever is loudest, most visible, best at managing up.</p>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--paper);line-height:1.8;margin-bottom:24px">Unmask asks the same question Beane asked: what actually moves the company forward? The answer is almost never who you think.</p>
-        <div style="border-top:1px solid var(--rule);padding-top:16px">
-          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ember)">// stop paying for sluggers. find out who actually wins games.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROOF SECTION -->
-<section class="py-96 px-page border-t" id="case" style="background:var(--surface)">
-  <div class="container">
-    <div class="section-label">real_results</div>
-
-    <!-- Big stat -->
-    <div style="display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;margin-bottom:64px;padding-bottom:48px;border-bottom:1px solid var(--rule)">
-      <div>
-        <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(72px,10vw,120px);color:var(--ember);line-height:1">$280K</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--bone);letter-spacing:0.1em;margin-top:4px">// the cost of not knowing</div>
-      </div>
-      <div style="max-width:480px">
-        <p style="font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--paper);line-height:1.7;margin-bottom:12px">A senior engineer was carrying the whole team. Her manager called her "solid." She got a 4% raise and left for $45K more.</p>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);line-height:1.7">Team velocity dropped 28%. Two other engineers started interviewing. The raise that would have kept her: <span style="color:var(--ember)">$38K.</span></p>
-      </div>
+    <div style="text-align: center; padding: 40px 20px; opacity: 0.7; font-size: 0.9em;">
+        Currently living in Chicago, trying to become a human API
     </div>
 
-    <!-- Three quotes -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule)">
-      <div style="background:var(--code);padding:28px">
-        <p style="font-size:15px;color:var(--paper);line-height:1.7;font-style:italic;margin-bottom:20px">"Unmask told us our best engineer was about to quit two weeks before she said anything. We promoted her. She stayed."</p>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone);letter-spacing:0.1em;text-transform:uppercase;border-top:1px solid var(--rule);padding-top:14px"><span style="color:var(--ember);display:block;font-size:11px;margin-bottom:2px">Revolut</span>CTO</div>
-      </div>
-      <div style="background:var(--code);padding:28px">
-        <p style="font-size:15px;color:var(--paper);line-height:1.7;font-style:italic;margin-bottom:20px">"The engineer I thought was my best was coasting. The one I almost fired was holding the whole thing together."</p>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone);letter-spacing:0.1em;text-transform:uppercase;border-top:1px solid var(--rule);padding-top:14px"><span style="color:var(--ember);display:block;font-size:11px;margin-bottom:2px">Stripe</span>VP Engineering</div>
-      </div>
-      <div style="background:var(--code);padding:28px">
-        <p style="font-size:15px;color:var(--paper);line-height:1.7;font-style:italic;margin-bottom:20px">"One good person leaving costs more than Unmask costs for three years. We kept four people in the first six months."</p>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone);letter-spacing:0.1em;text-transform:uppercase;border-top:1px solid var(--rule);padding-top:14px"><span style="color:var(--ember);display:block;font-size:11px;margin-bottom:2px">Ramp</span>Chief People Officer</div>
-      </div>
+    <div id="writeup-gamification" class="writeup-page">
+        <a class="back-link" onclick="hideWriteup()">← Back</a>
+        <h2>Why gamification fails (and how to fix it)</h2>
+        <p style="margin-bottom: 20px; opacity: 0.7;">March 2025</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;"><strong>The problem with most gamification:</strong> Companies use points, badges, and leaderboards to trick users into doing what the organization wants. That's backwards.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Gamification isn't about manipulating someone to complete a task. It's about using game mechanics as a motivating factor to help people reach their own goals in a more habit-forming way.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 25px;"><strong>The core principle:</strong> Gamification is about motivating people to achieve their own goals, NOT the organization's goals.</p>
+        
+        <h3 style="font-size: 1.3em; margin: 25px 0 15px 0;">The Pain Squad case study</h3>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">SickKids hospital in Toronto needed children with cancer to fill out daily pain journals. The kids were suffering. The treatments were painful. Patients weren't up to the task of filling out their pain journals, particularly on bad days. With inconsistent reporting, it was impossible for doctors to determine which treatments work best.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Previous studies had tried paying kids to fill out journals. It didn't work.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">So they looked at the problem from the kids' perspective. They created "Pain Squad," an iPhone app that enlists kids as members of a special police force on a mission to hunt down pain.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">When children complete their pain report three days in a row, they progress from rookie to sergeant and through ranks until they finally become a chief. The team recruited heroes from Canada's leading police shows to create videos encouraging the children. The actors address each child by their rank.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">According to one mother: "It makes her feel that she's a part of this."</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 25px;">Instead of paying kids to provide information that researchers need, Pain Squad engages them in an inspiring mission. Most importantly, they are contributing to something bigger than themselves.</p>
+        
+        <h3 style="font-size: 1.3em; margin: 25px 0 15px 0;">The Hook Model: Building habit-forming technology</h3>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Effective hooks transition users from relying upon external triggers to cueing mental associations with internal triggers. Users move from states of low engagement to high engagement, from low preference to high preference.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;"><strong>Five fundamental questions for building effective hooks:</strong></p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;"><strong>1. Internal trigger:</strong> What do users really want? What pain is your product relieving? Does your users' internal trigger frequently prompt them to action?</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;"><strong>2. External trigger:</strong> What brings users to your service? Is your external trigger cueing them when they are most likely to act?</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;"><strong>3. Action:</strong> What is the simplest action users take in anticipation of reward, and how can you simplify your product to make this action easier?</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;"><strong>4. Variable reward:</strong> Are users fulfilled by the reward yet left wanting more? Does the reward satisfy your users' need while leaving them wanting more?</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;"><strong>5. Investment:</strong> What "bit of work" do users invest in your product? Does it load the next trigger and store value to improve the product with use?</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 25px;"><strong>6. Repeat</strong> this process over and over again.</p>
+        
+        <h3 style="font-size: 1.3em; margin: 25px 0 15px 0;">The power of variable rewards</h3>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Research shows that levels of dopamine surge when the brain is expecting a reward. But here's the key: what draws us to act is not the sensation we receive from the reward itself, but the need to alleviate the craving for that reward.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Feedback loops are all around us, but predictable ones don't create desire. The unsurprising response of your fridge light turning on when you open the door doesn't drive you to keep opening it again and again.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">However, add some variability to the mix—suppose a different treat magically appears in your fridge every time you open it—and voilà, intrigue is created.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 25px;"><strong>Three types of rewards:</strong></p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;"><strong>Social rewards (Tribe):</strong> Driven by our connectedness with other people. Quora demonstrated that social rewards and the variable reinforcement of recognition from peers proved to be much more frequent and salient motivators than monetary rewards.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 10px;"><strong>Hunt rewards:</strong> The pursuit itself. Seeking pleasure and avoiding pain.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 25px;"><strong>Self rewards:</strong> Seeking social acceptance while avoiding social rejection.</p>
+        
+        <h3 style="font-size: 1.3em; margin: 25px 0 15px 0;">Removing friction</h3>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Any technology or product that significantly reduces the steps to complete a task will enjoy high adoption rates by the people it assists.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Remove every single piece of friction in the process. No logins. Unique links for every user. Decrease time it takes to complete actions.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 25px;"><strong>The endowed progress effect:</strong> Two groups of customers were given punch cards awarding a free car wash once the cards were fully punched. One group was given a blank punch card with eight squares; the other was given a punch card with ten squares that came with two free punches. Both groups still had to purchase eight car washes to receive a free wash; however, the second group—those that were given two free punches—had a staggering 82 percent higher completion rate.</p>
+        
+        <h3 style="font-size: 1.3em; margin: 25px 0 15px 0;">Internal vs external triggers</h3>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;"><strong>External triggers</strong> tell the user what to do next by placing information within the user's environment (emails, notifications, text messages).</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;"><strong>Internal triggers</strong> tell the user what to do next through associations stored in the user's memory. When a product becomes tightly coupled with a thought, an emotion, or a preexisting routine, it leverages an internal trigger.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Negative emotions frequently serve as internal triggers. The ultimate goal of a habit-forming product is to solve the user's pain by creating an association so that the user identifies the company's product or service as the source of relief.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 25px;">Once we're hooked, using these products does not always require an explicit call to action. Instead, they rely upon our automatic responses to feelings that precipitate the desired behavior.</p>
+        
+        <h3 style="font-size: 1.3em; margin: 25px 0 15px 0;">The bottom line</h3>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Users who continuously find value in a product are more likely to tell their friends about it. Frequent usage creates more opportunities to encourage people to invite their friends, broadcast content, and share through word of mouth.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Hooked users become brand evangelists—megaphones for your company, bringing in new users at little or no cost.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Gamification isn't a "one size fits all" solution. What if we had dynamic rewards based on the user since everyone is driven by something different? Personalized and gamified experiences for every user, backed by decades of science-backed research.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I really think we can become the best product on the market at getting users to complete desired actions by tapping into the physiology of what makes users tick.</p>
     </div>
 
-  </div>
-</section>
-
-<!-- FOUNDER LETTER -->
-<section class="py-96 px-page border-t" style="background:var(--surface)">
-  <div style="max-width:680px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
-    <div class="section-label" style="justify-content:center;margin-bottom:36px">founder_letter</div>
-    <div class="letter">
-      <div class="letter-head">
-        <div>
-          <div class="letter-logo">[unmask]</div>
-          <div class="letter-date" style="font-size:10px;color:#aaa;margin-top:4px">people_intelligence_platform</div>
-        </div>
-        <div class="letter-date">march 2025</div>
-      </div>
-      <div class="letter-body">
-        <p>To whoever is running a team right now,</p>
-        <p>The team you build is the company you build. Especially early on, when you have very few dollars and you're competing in the world's most competitive market — the market for people.</p>
-        <p>After I sold my last company, I knew exactly what I wanted to fix next. People are the biggest cost on any balance sheet — and everyone is trying to cut bloat without knowing where it actually lives.</p>
-        <p>The problem I kept running into: I never really knew who was good. I went on vibes. We overpaid people who should have been fired and underpaid the ones carrying the company. Nobody could prove it either way.</p>
-        <div class="letter-qs">
-          <p>Is my highest-paid engineer actually my best one?</p>
-          <p>Did the person who quit last month carry three others without me knowing?</p>
-          <p>Am I about to lose someone and only find out when they hand in their notice?</p>
-        </div>
-        <p>Unmask gives everyone an honest grade based on what they actually do. No surveys. No gut feel. Just the truth.</p>
-      </div>
-      <div style="margin-top:36px">
-        <p style="font-family:'Georgia',serif;font-size:15px;color:#2a2a2a;margin-bottom:20px">Sincerely,</p>
-        <div style="font-family:'Dancing Script','Brush Script MT',cursive;font-size:52px;color:#1a1a1a;line-height:1;margin-bottom:8px;letter-spacing:-0.01em">Sam</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-top:6px">Founder & CEO, Unmask</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="py-96 px-page border-t" id="pricing">
-  <div class="container">
-    <div class="section-label">pricing</div>
-    <h2 style="font-size:clamp(28px,4vw,52px);margin-bottom:12px">simple <span style="color:var(--ember)">pricing.</span></h2>
-    <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);max-width:480px;line-height:1.8;margin-bottom:48px">If you're not surprised by what you find out, you pay nothing.</p>
-
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);max-width:720px">
-      <div class="price-cell featured">
-        <div class="price-num">$150<span style="font-size:16px;color:var(--bone);font-family:'JetBrains Mono',monospace;font-weight:400">/seat/mo</span></div>
-        <div class="price-period" style="margin-top:4px;margin-bottom:20px">billed annually · min 25 seats</div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div class="price-item">24/7 scanning of GitHub, Jira, Slack</div>
-          <div class="price-item">real-time flight risk alerts</div>
-          <div class="price-item">grade for every employee</div>
-          <div class="price-item">weekly digest for managers</div>
-        </div>
-      </div>
-      <div class="price-cell">
-        <div class="price-num">custom</div>
-        <div class="price-period" style="margin-top:4px;margin-bottom:20px">500+ employees</div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div class="price-item">everything in standard</div>
-          <div class="price-item">HRIS integrations</div>
-          <div class="price-item">M&A due diligence</div>
-          <div class="price-item">dedicated support</div>
-        </div>
-      </div>
+    <div id="writeup-amsterdam" class="writeup-page">
+        <a class="back-link" onclick="hideWriteup()">← Back</a>
+        <h2>How I closed a million-dollar deal with a stranger's charger</h2>
+        <p style="margin-bottom: 20px; opacity: 0.7;">October 2025</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">10 months ago, I landed in Amsterdam for a conference.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I got off the 9 hour plane ride and had about a half hour before an extremely important sales call.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I didn't know it at the time but this was the deal that would lead me to sell my company for millions at 24.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Only issue was my laptop was dead and I didn't bring a European adapter.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I'm not kidding when I tell you this. I literally ran up and down the streets of Amsterdam asking anyone who would listen to help.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I was 3 minutes away from the call and on my last resort.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I ended up giving a man at the front desk of a gym my ID, my wallet and passport as collateral to borrow his charger.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I made it on the call only 1 minute late and closed the deal.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">And while I don't recommend giving a random person all of your belongings in a foreign country… the point I'm trying to make is that sometimes you have to create your destiny with what you're given.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">And this lesson started right here at Butler just a few years ago.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I always knew I wanted to be an entrepreneur but at the time, Butler didn't offer a specific class or major that fit my purpose.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I had 3 credit hours remaining at Butler and instead of taking a class I decided that I would use this as an opportunity to learn the ropes of starting a business.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I didn't really know what the business was going to be or if how this would work but as we all know. Life is won by people who say yes and figure it out later. Not those who wait.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">So I sent a cold email to some guy named Nick.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">He responded out of the blue to meet for coffee and eventually decided to sponsor me in starting Zealot as well as knocking out those 3 credits.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Nick and I carved out a path that allowed me to study entrepreneurship in a way that felt authentic to me and I hope can feel the same way for you all.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I can honestly say that getting the chance to study entrepreneurship at Butler changed my life.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Because in just under 24 months, we went from a measly Figma mockup I built in Econ class to just weeks ago selling Zealot and getting featured in Times Square.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">That's really the heart of what I want to share with you today - just because something doesn't exist doesn't mean it's impossible.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Entrepreneurship, at its core, is about building something from nothing.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Don't assume that because the exact role, major, or path doesn't exist that it can't be done.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I'm sure a lot of you are sitting here today dreaming of launching your own business. Wherever, in education, in tech, in the arts, whatever it may be.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">And my advice to you would be don't wait for the perfect opportunity to show up.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">The world needs people who are willing to create doors where none exist… people who are willing to run down the streets of Amsterdam with three minutes to spare and just figure it out.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">A lot of people believe that you can only start a business when you're ready. "When you've learned enough" when you have enough resources.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">But the truth is - I wasn't ready either, there's never going to be a perfect time.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">The absolute best advice I have and not to rip off Nike is to "just do it".</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">I'll leave you with a quote I think about a lot: "You don't learn to swim by reading about it, you learn by jumping in."</p>
     </div>
 
-    <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--bone);margin-top:20px">// replacing one engineer costs $280K. unmask pays for itself the first time it stops that from happening.</p>
-  </div>
-</section>
+    <div id="writeup-mom-test" class="writeup-page">
+        <a class="back-link" onclick="hideWriteup()">← Back</a>
+        <h2>What "The Mom" Test Got Wrong</h2>
+        <p style="margin-bottom: 20px; opacity: 0.7;">January 2026</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Yeah, I've read it. It's a great book with good intentions.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Disclaimer: these thoughts are primarily about building in B2B.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">One thing it gets wrong is the assumption that people will take an hour or more out of an already exhausting day to go deep into their consciousness and recall all the problems they encounter.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">The sad reality is that most people aren't hunting for problems. They're just there to collect a paycheck. If you're reading this, you're not like them.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Most people are doing the least amount of work possible. They follow a process. They're not constantly reflecting on every friction point.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">So you can't expect them to perfectly recall every problem they face. That's too hard of a question.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">And it's the wrong question. Instead, ask: what are you trying to get done?</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">It's your job to find the issues or friction points in the outcomes they're looking for - not theirs.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Start asking a better question to get a better outcome.</p>
+    </div>
 
-<!-- FINAL CTA -->
-<section class="final-cta border-t" style="background:var(--surface)">
-  <div class="section-label" style="justify-content:center;margin-bottom:32px">stop_guessing.start_knowing.</div>
-  <h2 class="final-h">find out who's<br>actually doing<br>the <span class="ember">work.</span></h2>
-  <p class="final-sub">Live in 24 hours. Nothing changes for your team.</p>
-  <button class="btn-primary" style="margin:0 auto;font-size:15px;padding:18px 48px">→ run_first_scan()</button>
-  <p class="final-note">$5,000 flat · pay nothing if nothing surprises you · no credit card required</p>
-</section>
+    <div id="writeup-onion" class="writeup-page">
+        <a class="back-link" onclick="hideWriteup()">← Back</a>
+        <h2>Entrepreneurship is like an onion</h2>
+        <p style="margin-bottom: 20px; opacity: 0.7;">January 2026</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Most startups are selling Tums.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">They see heartburn and think let's fix the burn!</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">But heartburn isn't the problem. Eating garbage is the problem.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Yes, Tums made billions. Something I haven't done yet! Good for them.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">They also solved nothing.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Unless you have an actual medical condition, they built a business on people's refusal to change.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">It's like a fucking game. Go find someone who doesn't have enough awareness to realize what their root problem is, then sell them a band-aid they'll buy forever.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">It works. And investors love it! Recurring revenue on human weakness. Woooohooo!</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">But the part that these companies won't tell us is that they need us to stay broken.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Tums needs you to keep eating fried food so you get heartburn before bed.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Energy drinks need you to stay sleep-deprived.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Hangover cures need you to keep drinking too much.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">News media needs you to stay outraged.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Because they're not in the business of solving problems. They're in the business of managing symptoms. And as a wise man once said, show me the incentive and I'll show you the outcome.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">So yeah, you can build that. You can make money. You can raise a round on your "sustainable competitive moat" (aka people's inability to change).</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Or you could actually peel the onion.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Go to the core. Build something that actually fixes the problem, even if it's harder to sell at first. Even if it means your customer doesn't need you anymore after it works.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Most founders won't do this. The outside of the onion is too comfortable. Too easy.</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">But if you're going to build something that actually makes a dent in the world, ask yourself:</p>
+        
+        <p style="line-height: 1.7; margin-bottom: 15px;">Are you helping people change? Or are you counting on them staying exactly the same?</p>
+    </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">[unmask]</div>
-  <div class="footer-links">
-    <a href="#how" class="footer-link">how_it_works</a>
-    <a href="#pricing" class="footer-link">pricing</a>
-    <a href="#" class="footer-link">privacy</a>
-    <a href="#" class="footer-link">security</a>
-  </div>
-  <div class="footer-copy">© 2025 unmask</div>
-</footer>
+    <script>
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            
+            header.classList.toggle('active');
+            content.classList.toggle('active');
+        }
 
+        function showWriteup(id) {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('writeup-' + id).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function hideWriteup() {
+            document.getElementById('main-content').style.display = 'block';
+            document.querySelectorAll('.writeup-page').forEach(page => {
+                page.classList.remove('active');
+            });
+            window.scrollTo(0, 0);
+        }
+    </script>
 </body>
 </html>
