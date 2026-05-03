@@ -2,6 +2,12 @@ name: Download images
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - claude/implement-todo-item-Qv6uh
+    paths:
+      - download-images.py
+      - .github/workflows/download-images.yml
 
 jobs:
   download:
@@ -20,7 +26,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ -n "$(git status --porcelain images/)" ]; then
             git add images/
-            git commit -m "Add downloaded image files"
+            git commit -m "Add downloaded image files [skip ci]"
             git push
           else
             echo "No new images to commit."
