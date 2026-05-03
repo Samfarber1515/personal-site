@@ -1,4 +1,0 @@
-images/tiktok-viral-content.png	https://gcdnb.pbrd.co/images/3Bxytggh195Y.png?o=1	HTTPError: HTTP Error 404: Not Found
-images/butler-football.png	https://gcdnb.pbrd.co/images/cKvnpnpRotP8.png?o=1	HTTPError: HTTP Error 404: Not Found
-images/first-bass-caught-while-ice-fishing.jpg	https://gcdnb.pbrd.co/images/zqUkkVTgAsBl.jpg?o=1	HTTPError: HTTP Error 404: Not Found
-images/in-the-hospital-after-the-marathon.jpg	https://gcdnb.pbrd.co/images/iwItbdFZLzI6.jpg?o=1	HTTPError: HTTP Error 404: Not Found
