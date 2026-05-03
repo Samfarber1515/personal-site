@@ -83,12 +83,15 @@ MAPPING = [
 
 
 def fetch(url, dest):
-    req = Request(url, headers={"User-Agent": UA})
+    req = Request(url, headers={"User-Agent": UA, "Referer": "https://samfarber.com/"})
     with urlopen(req, timeout=30) as r:
         data = r.read()
+        ctype = r.headers.get("content-type", "")
+    if not ctype.startswith("image/"):
+        raise RuntimeError(f"non-image content-type: {ctype}")
     with open(dest, "wb") as f:
         f.write(data)
-    return len(data)
+    return len(data), ctype
 
 
 def main():
@@ -98,27 +101,28 @@ def main():
     for i, (url, dest) in enumerate(MAPPING, 1):
         prefix = f"[{i:2d}/{len(MAPPING)}]"
         if os.path.exists(dest) and os.path.getsize(dest) > 0:
-            print(f"{prefix} SKIP {dest}")
+            print(f"{prefix} SKIP {dest}", flush=True)
             skipped += 1
             continue
         try:
-            size = fetch(url, dest)
-            print(f"{prefix} OK   {dest}  ({size} bytes)")
+            size, ctype = fetch(url, dest)
+            print(f"{prefix} OK   {dest}  ({size} bytes, {ctype})", flush=True)
             ok += 1
-        except (HTTPError, URLError, TimeoutError) as e:
-            print(f"{prefix} FAIL {dest}  {e}")
+        except Exception as e:
+            print(f"{prefix} FAIL {dest}  {type(e).__name__}: {e}", flush=True)
             failed += 1
-            failures.append((url, dest, str(e)))
+            failures.append((url, dest, f"{type(e).__name__}: {e}"))
             if os.path.exists(dest):
                 os.remove(dest)
         time.sleep(0.1)
 
     print(f"\nDone. ok={ok} skipped={skipped} failed={failed}")
     if failures:
-        print("\nFailed downloads (likely deleted from origin):")
-        for url, dest, err in failures:
-            print(f"  {dest}  <-  {url}  ({err})")
-        sys.exit(1)
+        with open("images/_failures.txt", "w") as f:
+            for url, dest, err in failures:
+                f.write(f"{dest}\t{url}\t{err}\n")
+        print(f"\n{failed} failures written to images/_failures.txt")
+    # Always exit 0 so the workflow commits whatever images succeeded.
 
 
 if __name__ == "__main__":
