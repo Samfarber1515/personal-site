@@ -1455,14 +1455,103 @@
             window.scrollTo(0, 0);
         }
 
-        // Little guy running in the tab. Still training.
+        // Little guy in the tab. He runs, dances, and shows off.
         (function() {
             const link = document.getElementById('favicon');
             const size = 64;
+            const TAU = Math.PI * 2;
+            const DOWN = Math.PI / 2;
             const canvas = document.createElement('canvas');
             canvas.width = canvas.height = size;
             const ctx = canvas.getContext('2d');
             if (!ctx) return;
+
+            // The routine, on a loop. Frame counts run at about 14fps.
+            const ROUTINE = [
+                { move: 'run', frames: 28 },
+                { move: 'dance', frames: 30 },
+                { move: 'backflip', frames: 20 },
+                { move: 'run', frames: 20 },
+                { move: 'jacks', frames: 24 },
+                { move: 'backflip', frames: 20 }
+            ];
+            const TOTAL = ROUTINE.reduce(function(n, step) { return n + step.frames; }, 0);
+
+            function mix(a, b, amount) {
+                return a + (b - a) * amount;
+            }
+
+            // Each move says where the body sits and where the limbs point.
+            // Angles are radians, measured clockwise from pointing right.
+            function poseFor(move, p) {
+                if (move === 'run') {
+                    const t = p * TAU * 2;
+                    const swing = Math.sin(t);
+                    return {
+                        dy: Math.abs(Math.cos(t)) * 2 - 1,
+                        rot: 0.12,
+                        arms: [0.5 - swing * 1.1, 2.6 + swing * 1.1],
+                        legs: [DOWN - swing * 0.85, DOWN + swing * 0.85]
+                    };
+                }
+
+                if (move === 'dance') {
+                    // arms up in a V, hips swinging, legs kicking out in turn
+                    const t = p * TAU * 2;
+                    const swing = Math.sin(t);
+                    return {
+                        dx: swing * 2,
+                        dy: Math.abs(Math.cos(t)) * 2 - 1,
+                        rot: swing * 0.2,
+                        arms: [mix(1.2, -1.0, (swing + 1) / 2), mix(-2.1, 1.94, (swing + 1) / 2)],
+                        legs: [
+                            DOWN - 0.15 - Math.max(0, swing) * 0.55,
+                            DOWN + 0.15 + Math.max(0, -swing) * 0.55
+                        ]
+                    };
+                }
+
+                if (move === 'backflip') {
+                    // crouch, launch, tuck and spin, then stick the landing
+                    if (p < 0.2) {
+                        const crouch = p / 0.2;
+                        return {
+                            dy: crouch * 4,
+                            rot: crouch * 0.25,
+                            arms: [2.3, 2.9],
+                            legs: [DOWN - 0.4, DOWN + 0.4],
+                            legLen: mix(18, 14, crouch)
+                        };
+                    }
+                    if (p < 0.85) {
+                        const air = (p - 0.2) / 0.65;
+                        return {
+                            dy: 4 - Math.sin(air * Math.PI) * 20,
+                            rot: 0.25 - TAU * air,
+                            arms: [1.1, 1.7],
+                            armLen: 11,
+                            legs: [0.65, 1.15],
+                            legLen: 13
+                        };
+                    }
+                    const land = (p - 0.85) / 0.15;
+                    return {
+                        dy: mix(4, 0, land),
+                        rot: mix(0.25, 0, land),
+                        arms: [mix(2.0, 0.6, land), mix(2.9, 2.5, land)],
+                        legs: [DOWN - mix(0.45, 0.15, land), DOWN + mix(0.45, 0.15, land)],
+                        legLen: mix(15, 18, land)
+                    };
+                }
+
+                // jumping jacks
+                const open = (Math.sin(p * TAU * 2) + 1) / 2;
+                return {
+                    dy: -open * 3,
+                    arms: [mix(1.35, -1.05, open), mix(1.79, -2.09, open)],
+                    legs: [mix(DOWN - 0.08, DOWN - 0.5, open), mix(DOWN + 0.08, DOWN + 0.5, open)]
+                };
+            }
 
             function limb(x, y, angle, length) {
                 ctx.beginPath();
@@ -1471,52 +1560,62 @@
                 ctx.stroke();
             }
 
-            function draw(t) {
-                const swing = Math.sin(t);
-                const bob = Math.abs(Math.cos(t)) * 2 - 1;
-
+            function render(pose) {
                 ctx.clearRect(0, 0, size, size);
+                ctx.save();
+                ctx.translate(size / 2 + (pose.dx || 0), size / 2 + 2 + (pose.dy || 0));
+                ctx.rotate(pose.rot || 0);
+
                 ctx.fillStyle = ctx.strokeStyle = '#000';
                 ctx.lineCap = 'round';
                 ctx.lineWidth = 7;
 
-                const shoulderX = 36, shoulderY = 26 + bob;
-                const hipX = 27, hipY = 43 + bob;
+                const shoulderY = -12, hipY = 6;
+                const armLen = pose.armLen || 15, legLen = pose.legLen || 18;
 
-                // head
                 ctx.beginPath();
-                ctx.arc(41, 15 + bob, 8, 0, Math.PI * 2);
+                ctx.arc(0, -22, 7, 0, TAU);
                 ctx.fill();
 
-                // torso
                 ctx.beginPath();
-                ctx.moveTo(shoulderX, shoulderY);
-                ctx.lineTo(hipX, hipY);
+                ctx.moveTo(0, shoulderY);
+                ctx.lineTo(0, hipY);
                 ctx.stroke();
 
-                // arms and legs, swinging opposite each other
-                limb(shoulderX, shoulderY, 0.5 - swing * 1.1, 15);
-                limb(shoulderX, shoulderY, 2.6 + swing * 1.1, 15);
-                limb(hipX, hipY, Math.PI / 2 - swing * 0.85, 18);
-                limb(hipX, hipY, Math.PI / 2 + swing * 0.85, 18);
+                limb(0, shoulderY, pose.arms[0], armLen);
+                limb(0, shoulderY, pose.arms[1], armLen);
+                limb(0, hipY, pose.legs[0], legLen);
+                limb(0, hipY, pose.legs[1], legLen);
 
+                ctx.restore();
                 link.href = canvas.toDataURL('image/png');
+            }
+
+            function drawFrame(frame) {
+                let at = frame % TOTAL;
+                for (let i = 0; i < ROUTINE.length; i++) {
+                    if (at < ROUTINE[i].frames) {
+                        render(poseFor(ROUTINE[i].move, at / ROUTINE[i].frames));
+                        return;
+                    }
+                    at -= ROUTINE[i].frames;
+                }
             }
 
             const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             if (still) {
-                draw(0.8);
+                drawFrame(6);
                 return;
             }
 
             let frame = 0;
-            draw(0);
+            drawFrame(0);
             // setInterval rather than rAF so he keeps going in background tabs,
             // which is the only place you can actually see him
             setInterval(function() {
                 frame++;
-                draw(frame * 0.5);
-            }, 90);
+                drawFrame(frame);
+            }, 70);
         })();
     </script>
 </body>
