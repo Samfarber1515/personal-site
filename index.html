@@ -131,6 +131,40 @@
             opacity: 0.7;
         }
         
+        .splits {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 460px;
+            margin: 16px 0;
+            font-size: 0.95em;
+        }
+        
+        .splits th, .splits td {
+            text-align: left;
+            padding: 7px 14px 7px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .splits th {
+            font-weight: 500;
+            border-bottom: 1px solid #000;
+        }
+        
+        .splits td:last-child, .splits th:last-child {
+            padding-right: 0;
+            opacity: 0.7;
+        }
+        
+        .splits tr:last-child td {
+            border-bottom: none;
+            border-top: 1px solid #000;
+            font-weight: 500;
+        }
+        
+        .splits tr:last-child td:last-child {
+            opacity: 1;
+        }
+        
         .item p {
             line-height: 1.7;
             margin-bottom: 12px;
@@ -741,17 +775,55 @@
                 <div class="item">
                     <h3>2026: Complete a sprint triathlon in 1 hour &amp; 30 minutes (failed)</h3>
                     <div class="meta">August 23, 2026 &middot; SuperTri Chicago &middot; 1:37:26</div>
-                    <p>Finished my first triathlon. Missed the goal by 7 minutes and 26 seconds.</p>
-                    <p>Goal was 90 mins: 15min swim (2:00/100m) → 3min transition → 40min bike (30km/h) → 2min transition → 30min run (6min/km)</p>
-                    <p>What actually happened:</p>
-                    <p>Swim (750m): 13:18 at 1:45/100m — beat it by ~2 mins<br>
-                    T1: 5:53 — lost ~3 mins<br>
-                    Bike (24km): 52:00 at ~28km/h — lost ~12 mins<br>
-                    T2: 2:17 — basically on plan<br>
-                    Run (5km): 23:58 at 4:48/km — beat it by ~6 mins</p>
-                    <p>So the swim and the run were both way ahead of plan. The bike ate the whole buffer and then some. Turns out the Chicago course was a bit longer, and 30km/h was a number I picked because it sounded round, not because I'd ever held it.</p>
-                    <p>Also had no idea T1 would take almost 6 minutes. Wetsuit off, feet wet, fumbling with a helmet strap while people who'd clearly done this before rode past me.</p>
-                    <p>First tri though, and I finished it upright this time, which after last year is not nothing. Next one I need to bike a lot more.</p>
+                    <p>I did my first triathlon. I finished in 1:37:26. My goal was 1:30:00, so I missed it by about 7 minutes.</p>
+                    <p>Here is how each part went:</p>
+                    <table class="splits">
+                        <tr>
+                            <th>Leg</th>
+                            <th>Goal</th>
+                            <th>Actual</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>Swim, 750m</td>
+                            <td>15:00</td>
+                            <td>13:18</td>
+                            <td>2 min fast</td>
+                        </tr>
+                        <tr>
+                            <td>Transition 1</td>
+                            <td>3:00</td>
+                            <td>5:53</td>
+                            <td>3 min slow</td>
+                        </tr>
+                        <tr>
+                            <td>Bike, 24km</td>
+                            <td>40:00</td>
+                            <td>52:00</td>
+                            <td>12 min slow</td>
+                        </tr>
+                        <tr>
+                            <td>Transition 2</td>
+                            <td>2:00</td>
+                            <td>2:17</td>
+                            <td>about right</td>
+                        </tr>
+                        <tr>
+                            <td>Run, 5km</td>
+                            <td>30:00</td>
+                            <td>23:58</td>
+                            <td>6 min fast</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>1:30:00</td>
+                            <td>1:37:26</td>
+                            <td>7 min slow</td>
+                        </tr>
+                    </table>
+                    <p>The swim and the run went great. The bike is what got me. The Chicago course was a bit longer, and I picked 30km/h because it was a round number. I had never actually ridden that fast.</p>
+                    <p>I also did not know the first transition would take almost 6 minutes. I was soaking wet and could not get my helmet strap to work. People kept riding past me.</p>
+                    <p>But I finished. Last year I ended up in the hospital, so this one feels good. I just need to bike a lot more.</p>
                 </div>
                 <div class="item">
                     <h3>2025: Run a marathon (failed)</h3>
