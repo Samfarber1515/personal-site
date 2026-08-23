@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sam Farber</title>
+    <link id="favicon" rel="icon" href="data:,">
     <style>
         * {
             margin: 0;
@@ -748,7 +749,7 @@
                     Bike (24km): 52:00 at ~28km/h — lost ~12 mins<br>
                     T2: 2:17 — basically on plan<br>
                     Run (5km): 23:58 at 4:48/km — beat it by ~6 mins</p>
-                    <p>So the swim and the run were both way ahead of plan. The bike ate the whole buffer and then some. Turns out the course rode longer than the 20km I trained for, and 30km/h was a number I picked because it sounded round, not because I'd ever held it.</p>
+                    <p>So the swim and the run were both way ahead of plan. The bike ate the whole buffer and then some. Turns out the Chicago course was a bit longer, and 30km/h was a number I picked because it sounded round, not because I'd ever held it.</p>
                     <p>Also had no idea T1 would take almost 6 minutes. Wetsuit off, feet wet, fumbling with a helmet strap while people who'd clearly done this before rode past me.</p>
                     <p>First tri though, and I finished it upright this time, which after last year is not nothing. Next one I need to bike a lot more.</p>
                 </div>
@@ -1375,6 +1376,70 @@
             });
             window.scrollTo(0, 0);
         }
+
+        // Little guy running in the tab. Still training.
+        (function() {
+            const link = document.getElementById('favicon');
+            const size = 64;
+            const canvas = document.createElement('canvas');
+            canvas.width = canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            function limb(x, y, angle, length) {
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(x + Math.cos(angle) * length, y + Math.sin(angle) * length);
+                ctx.stroke();
+            }
+
+            function draw(t) {
+                const swing = Math.sin(t);
+                const bob = Math.abs(Math.cos(t)) * 2 - 1;
+
+                ctx.clearRect(0, 0, size, size);
+                ctx.fillStyle = ctx.strokeStyle = '#000';
+                ctx.lineCap = 'round';
+                ctx.lineWidth = 7;
+
+                const shoulderX = 36, shoulderY = 26 + bob;
+                const hipX = 27, hipY = 43 + bob;
+
+                // head
+                ctx.beginPath();
+                ctx.arc(41, 15 + bob, 8, 0, Math.PI * 2);
+                ctx.fill();
+
+                // torso
+                ctx.beginPath();
+                ctx.moveTo(shoulderX, shoulderY);
+                ctx.lineTo(hipX, hipY);
+                ctx.stroke();
+
+                // arms and legs, swinging opposite each other
+                limb(shoulderX, shoulderY, 0.5 - swing * 1.1, 15);
+                limb(shoulderX, shoulderY, 2.6 + swing * 1.1, 15);
+                limb(hipX, hipY, Math.PI / 2 - swing * 0.85, 18);
+                limb(hipX, hipY, Math.PI / 2 + swing * 0.85, 18);
+
+                link.href = canvas.toDataURL('image/png');
+            }
+
+            const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (still) {
+                draw(0.8);
+                return;
+            }
+
+            let frame = 0;
+            draw(0);
+            // setInterval rather than rAF so he keeps going in background tabs,
+            // which is the only place you can actually see him
+            setInterval(function() {
+                frame++;
+                draw(frame * 0.5);
+            }, 90);
+        })();
     </script>
 </body>
 </html>
